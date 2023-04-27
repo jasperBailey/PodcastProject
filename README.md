@@ -3,7 +3,7 @@
 Podcast App
 Create an app where users can browse podcasts, subscribe to podcasts and play podcasts.
 
-MVP:
+MVP
 A user should be able to:
 * Browse podcasts
 * Subscribe to podcasts
