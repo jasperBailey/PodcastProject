@@ -10,10 +10,10 @@ A user should be able to:
 * Subscribe to podcasts
 * View a list of episodes for a podcast
 
-# Extenisons
+# Extensions
 
 * Add a filter search bar to the application to find specific podcasts 
 * Add a favourites/your subscription list to display on the app
-* Funcionality to play the selected podcast
+* Functionality to play the selected podcast
 
 
