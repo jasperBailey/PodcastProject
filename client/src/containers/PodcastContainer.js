@@ -2,11 +2,12 @@ import PodcastList from "../components/PodcastList";
 import FavList from "../components/FavList";
 import React, { useState, useEffect } from "react";
 import { request, gql, GraphQLClient } from "graphql-request";
+import PodcastService from "../services/PodcastService";
 
 const PodcastContainer = () => {
     const apikey = process.env.REACT_APP_KEY;
+    console.log(apikey)
 
-<<<<<<< HEAD
     const endpoint = `https://api.taddy.org`;
 
     const graphQLClient = new GraphQLClient(endpoint, {
@@ -18,7 +19,9 @@ const PodcastContainer = () => {
 
     const query = gql`
         {
-            getPodcastSeries(name: "This American Life") {
+            getPodcastSeries(uuid:"d682a935-ad2d-46ee-a0ac-139198b83bcc")
+            
+            {
                 uuid
                 name
                 description
@@ -34,24 +37,24 @@ const PodcastContainer = () => {
 
     getData();
 
+    const [favPods, setFavPods] = useState([])
+
+    const getFavPods = async () => {
+        const favouritesData = await PodcastService.getFavourites()
+        setFavPods(favouritesData)
+    }
+
+    useEffect( () => {
+        getFavPods()
+    }, [])
+
     return (
         <>
             <h2>Podcast Container</h2>
-            <PodcastList />
-            <FavList />
+            {/* <PodcastList /> */}
+            {/* <FavList favPods={favPods} apikey={apikey}/> */}
         </>
     );
 };
 
 export default PodcastContainer;
-=======
-    return ( <>
-        <h2>Podcast Container</h2>
-        <h3>Hello</h3>
-        <PodcastList />
-        <FavList/>
-    </> );
-}
- 
-export default PodcastContainer;
->>>>>>> ef130d9b05a52ab3aad9ca2d7bae1732fe2f23ec

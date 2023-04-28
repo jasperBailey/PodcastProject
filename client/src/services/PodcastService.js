@@ -1,5 +1,5 @@
 const baseURL = "http://localhost:9000/api/favourites/";
-const PostcastService = {
+const PodcastService = {
   getFavourites() {
     return fetch(baseURL).then((res) => res.json());
   },
