@@ -2,15 +2,19 @@ import PodcastList from "../components/PodcastList";
 import FavList from "../components/FavList";
 import React, { useState, useEffect } from "react";
 import { request, gql, GraphQLClient } from "graphql-request";
-import PodcastService from "../services/PodcastService";
+import {getFavourites, postFavourite, putFavourite, deleteFavourite} from "../services/PodcastService";
 
 const PodcastContainer = () => {
   const [favPods, setFavPods] = useState([]);
 
   const getFavPods = async () => {
-    const favouritesData = await PodcastService.getFavourites();
+    const favouritesData = await getFavourites();
     setFavPods(favouritesData);
   };
+
+  const addFavPod = async (uuid) => {
+    
+  }
 
   useEffect(() => {
     getFavPods();
