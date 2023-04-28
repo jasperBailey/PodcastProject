@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState} from "react";
 import { request, gql, GraphQLClient } from "graphql-request";
 
 const Podcast = ({pod}) => {
+
+    const [podcastData, setPodcastData] = useState({})
 
     const apikey = process.env.REACT_APP_KEY
 
@@ -27,7 +29,7 @@ const Podcast = ({pod}) => {
 
     const getData = async () => {
         const data = await graphQLClient.request(query);
-        console.log(data)
+       setPodcastData(data.getPodcastSeries)
     };
 
     useEffect( () => {
@@ -35,9 +37,10 @@ const Podcast = ({pod}) => {
     }, [])
 
     return ( <>
-        <h4>Podcast Item</h4>
+        <li>{podcastData.name}</li>
+        <li>{podcastData.description}</li>
+        <img src={podcastData.imageUrl}></img>
 
     </> );
 }
- 
 export default Podcast;
