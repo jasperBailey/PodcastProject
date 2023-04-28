@@ -1,10 +1,10 @@
 const baseURL = "http://localhost:9000/api/favourites/";
 const PostcastService = {
-  getFavPodcast() {
+  getFavourites() {
     return fetch(baseURL).then((res) => res.json());
   },
 
-  addFavPodcast(podcast) {
+  postFavourite(podcast) {
     return fetch(baseURL, {
       method: "POST",
       body: JSON.stringify(podcast),
@@ -14,7 +14,7 @@ const PostcastService = {
     }).then((res) => res.json());
   },
 
-  updateFavPodcast(podcast) {
+  putFavourite(podcast) {
     return fetch(baseURL + podcast._id, {
       method: "PUT",
       body: JSON.stringify(podcast),
@@ -24,7 +24,7 @@ const PostcastService = {
     }).then((res) => res.json());
   },
 
-  deleteFavPodcast(id) {
+  deleteFavourite(id) {
     return fetch(baseURL + id, {
       method: "DELETE",
     });
