@@ -6,6 +6,7 @@ import { request, gql, GraphQLClient } from "graphql-request";
 const PodcastContainer = () => {
     const apikey = process.env.REACT_APP_KEY;
 
+<<<<<<< HEAD
     const endpoint = `https://api.taddy.org`;
 
     const graphQLClient = new GraphQLClient(endpoint, {
@@ -43,3 +44,14 @@ const PodcastContainer = () => {
 };
 
 export default PodcastContainer;
+=======
+    return ( <>
+        <h2>Podcast Container</h2>
+        <h3>Hello</h3>
+        <PodcastList />
+        <FavList/>
+    </> );
+}
+ 
+export default PodcastContainer;
+>>>>>>> ef130d9b05a52ab3aad9ca2d7bae1732fe2f23ec
