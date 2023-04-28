@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { request, gql, GraphQLClient } from "graphql-request";
 
+const Podcast = ({pod}) => {
 
-const Podcast = ({pod, apikey}) => {
+    const apikey = process.env.REACT_APP_KEY
 
     const endpoint = `https://api.taddy.org`;
 
@@ -15,7 +16,8 @@ const Podcast = ({pod, apikey}) => {
 
     const query = gql`
         {
-            getPodcastSeries(uuid: ${pod.uuid}) {
+            getPodcastSeries(uuid: "${pod.uuid}") {
+                uuid
                 name
                 description
                 imageUrl
@@ -25,6 +27,7 @@ const Podcast = ({pod, apikey}) => {
 
     const getData = async () => {
         const data = await graphQLClient.request(query);
+        console.log(data)
     };
 
     useEffect( () => {

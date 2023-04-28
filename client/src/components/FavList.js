@@ -1,11 +1,11 @@
 import Podcast from "./Podcast";
-const FavList = ({ favPods, apikey }) => {
+const FavList = ({ favPods}) => {
     return (
         <>
             <h3>Favourite List</h3>
             <ul>
-                {favPods.map((pod) => {
-                    return <Podcast pod={pod} apikey={apikey}/>;
+                {favPods.map((pod, index) => {
+                    return <Podcast pod={pod} key={index}/>;
                 })}
             </ul>
         </>

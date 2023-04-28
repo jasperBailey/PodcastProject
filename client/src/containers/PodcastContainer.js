@@ -5,37 +5,38 @@ import { request, gql, GraphQLClient } from "graphql-request";
 import PodcastService from "../services/PodcastService";
 
 const PodcastContainer = () => {
-    const apikey = process.env.REACT_APP_KEY;
-    console.log(apikey)
+    // const apikey = process.env.REACT_APP_KEY;
 
-    const endpoint = `https://api.taddy.org`;
+    // const endpoint = `https://api.taddy.org`;
 
-    const graphQLClient = new GraphQLClient(endpoint, {
-        headers: {
-            "X-USER-ID": 372,
-            "X-API-KEY": apikey,
-        },
-    });
+    // const graphQLClient = new GraphQLClient(endpoint, {
+    //     headers: {
+    //         "X-USER-ID": 372,
+    //         "X-API-KEY": apikey,
+    //     },
+    // });
 
-    const query = gql`
-        {
-            getPodcastSeries(uuid:"d682a935-ad2d-46ee-a0ac-139198b83bcc")
+    // const query = gql`
+    //     {
+    //         getPodcastSeries(uuid:"d682a935-ad2d-46ee-a0ac-139198b83bcc")
             
-            {
-                uuid
-                name
-                description
-                imageUrl
-            }
-        }
-    `;
+    //         {
+    //             uuid
+    //             name
+    //             description
+    //             imageUrl
+    //         }
+    //     }
+    // `;
 
-    const getData = async () => {
-        const data = await graphQLClient.request(query);
-        console.log(data);
-    };
+    // const getData = async () => {
+    //     const data = await graphQLClient.request(query);
+    //     console.log(data);
+    // };
 
-    getData();
+    // useEffect( () => {
+    //     getData()
+    // }, [])
 
     const [favPods, setFavPods] = useState([])
 
@@ -52,7 +53,7 @@ const PodcastContainer = () => {
         <>
             <h2>Podcast Container</h2>
             {/* <PodcastList /> */}
-            {/* <FavList favPods={favPods} apikey={apikey}/> */}
+            {favPods ? <FavList favPods={favPods}/>: null}
         </>
     );
 };
