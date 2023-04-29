@@ -6,7 +6,7 @@ const Podcast = ({ pod }) => {
 
     const fetchPodcastData = async () => {
         const data = await getPodSeries(pod.uuid);
-        setPodcastData(data.getPodcastSeries);
+        setPodcastData(data);
     };
 
     useEffect(() => {

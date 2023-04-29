@@ -1,4 +1,4 @@
-import { request, gql, GraphQLClient } from "graphql-request";
+import { gql, GraphQLClient } from "graphql-request";
 
 const makeGQLRequest = async (query) => {
     const apiKey = process.env.REACT_APP_KEY
@@ -30,5 +30,22 @@ export const getPodSeries = async (uuid) => {
     `;
     
     const data = await makeGQLRequest(query)
-    return data
+    return data.getPodcastSeries
+}
+
+export const getEpisodesList = async (uuid) => {
+
+    const query = gql`
+        {
+            getPodcastSeries(uuid: "${uuid}") {
+                uuid
+                episodes{
+                    uuid
+                    name
+                    description
+                    audioUrl
+                }
+            }
+        }
+    `;
 }
