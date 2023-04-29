@@ -1,23 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getPodSeries } from "../services/APIService";
 
 const Podcast = ({pod}) => {
 
-    const getPodData = async () => {
+    const [podcastData, setPodcastData] = useState({})
+
+    const fetchPodcastData = async () => {
         const data = await getPodSeries(pod.uuid)
-        console.log(data)
+        return data
     }
     
     useEffect( () => {
-        getPodData()
+        const data = fetchPodcastData()
+        setPodcastData(data)
     }, [])
 
 
 
     return ( <>
-        <h4>Podcast Item</h4>
+        
 
     </> );
 }
- 
 export default Podcast;
