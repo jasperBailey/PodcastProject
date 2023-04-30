@@ -25,20 +25,6 @@ export const getPodSeries = async (uuid) => {
                 name
                 description
                 imageUrl
-            }
-        }
-    `;
-    
-    const data = await makeGQLRequest(query)
-    return data.getPodcastSeries
-}
-
-export const getEpisodesList = async (uuid) => {
-
-    const query = gql`
-        {
-            getPodcastSeries(uuid: "${uuid}") {
-                uuid
                 episodes{
                     uuid
                     name
@@ -48,4 +34,7 @@ export const getEpisodesList = async (uuid) => {
             }
         }
     `;
+    
+    const data = await makeGQLRequest(query)
+    return data.getPodcastSeries
 }
