@@ -9,9 +9,7 @@ const Podcast = ({ pod }) => {
         setPodcastData(data);
     };
 
-    useEffect(() => {
-        fetchPodcastData();
-    }, []);
+    useEffect(() => fetchPodcastData, []);
 
     return (
         <>
