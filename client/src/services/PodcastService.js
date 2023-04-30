@@ -21,7 +21,10 @@ export const putFavourite = (podcast) => {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((res) => res.json());
+  }).then((res) => {
+    // console.log(res.json());
+    return res.json();
+  });
 };
 
 export const deleteFavourite = (id) => {
