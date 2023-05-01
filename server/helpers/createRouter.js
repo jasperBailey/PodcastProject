@@ -40,11 +40,13 @@ const createRouter = function (collection) {
 
   router.delete("/:id", (req, res) => {
     const id = req.params.id;
+    console.log("id: ", id);
     collection
       .deleteOne({ _id: new ObjectId(id) })
       .then((result) => res.json(result))
       .catch(handleError(res));
   });
+
   router.put("/:id", (req, res) => {
     const id = req.params.id;
     const body = req.body;
