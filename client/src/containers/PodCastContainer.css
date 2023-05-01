@@ -1,0 +1,10 @@
+.router{
+    font-size: 100px;
+    cursor: pointer;
+}
+
+.active{
+    color:greenyellow;
+    background-color: #fff;
+    font-size: 25px;
+}
