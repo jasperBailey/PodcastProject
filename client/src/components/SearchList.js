@@ -8,7 +8,6 @@ const SearchList = () => {
 
   const handleSearch = async () => {
     const data = await getPodcastSearch(searchText);
-    console.log(data)
     setSearchResults(data);
   };
 

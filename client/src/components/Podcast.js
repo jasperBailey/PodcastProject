@@ -1,37 +1,26 @@
-import { useEffect, useState } from "react";
-import { getPodSeries } from "../services/APIService";
 import styled from "styled-components";
+import "./Podcast.css";
 
-const FavPodcast = ({ podcast, removeFavourite }) => {
-  const [podcastData, setPodcastData] = useState({});
-
-  const fetchPodcastData = async () => {
-    const data = await getPodSeries(podcast.uuid);
-    setPodcastData(data);
-  };
-
-  useEffect(() => fetchPodcastData, []);
-
+const Podcast = ({ podcast, removeFavourite }) => {
   const handleButtonClick = () => {
-    removeFavourite(podcast._id);
+    removeFavourite(podcast.uuid);
   };
+
 
   return (
     <>
       <div className="podcastList-body">
-        <StyledImg src={podcastData.imageUrl}></StyledImg>
+        <StyledImg src={podcast.imageUrl}></StyledImg>
         <h4>
-          {podcastData.name}{" "}
-          <button onClick={handleButtonClick}>
-            <span>❌</span> Remove
-          </button>
+          {podcast.name}{" "}
         </h4>
+        <button className="deleteButton" onClick={handleButtonClick}>Remove</button>
+        </div>
         {/* add onclick to bring to this selected podcast to see more details: discription, episodes etc. */}
-      </div>
     </>
   );
 };
-export default FavPodcast;
+export default Podcast;
 export const StyledImg = styled.img`
   width: 100px;
   height: 100px;

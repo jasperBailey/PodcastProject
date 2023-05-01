@@ -3,11 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import SearchList from "../components/SearchList";
 import FavList from "../components/FavList";
-<<<<<<< HEAD
 import { getPodSeries } from "../services/APIService";
-=======
-import './PodCastContainer.css'
->>>>>>> main
 
 import {
     getFavourites,
@@ -20,25 +16,19 @@ const PodcastContainer = () => {
     const [dbFavPods, setDbFavPods] = useState([]);
     const [podcastsData, setPodcastsData] = useState([]);
 
+    useEffect(() => getDbFavPods, []);
+
+
+    if (!podcastsData) {
+        fetchAllPodcastData()
+    }
+
     const getDbFavPods = async () => {
         const favouritesData = await getFavourites();
         setDbFavPods(favouritesData);
     };
 
-    useEffect(() => getDbFavPods, []);
-    // useEffect(() => fetchAllPodcastData, []);
-////////////////////////////////// data one is from API; db one is from DB
-
-
-<<<<<<< HEAD
     const fetchAllPodcastData = async () => {
-=======
-  return (
-    <Router>
-     <NavBar />
-      <Routes>
-        <Route exact path="/" element={<SearchList />} className="router" /> 
->>>>>>> main
 
         const allPodcastPromises = dbFavPods.map( async (dbPodcast) => {
             const onePodcastData = await fetchOnePodcastData(dbPodcast.uuid)
@@ -50,12 +40,16 @@ const PodcastContainer = () => {
         setPodcastsData(allPodcastsData)
     };
 
+   
+
     const fetchOnePodcastData = async (uuid) => {
         const data = await getPodSeries(uuid);
         return data
     }
 
-    fetchAllPodcastData();
+
+
+
 
 
     const removeFavourite = (uuidToDelete) => {
@@ -70,7 +64,6 @@ const PodcastContainer = () => {
             })
         );
     };
-    // console.log("dbFavPods: ",dbFavPods);
 
     return (
         <Router>

@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-import { getPodSeries } from "../services/APIService";
-import { Link, useNavigate } from "react-router-dom";
-import Episode from "./Episode";
 import styled from "styled-components";
 import "./FavPodcast.css";
 
@@ -21,16 +17,6 @@ const FavPodcast = ({ podcast, removeFavourite }) => {
         <button className="deleteButton" onClick={handleButtonClick}>Remove</button>
         </div>
         {/* add onclick to bring to this selected podcast to see more details: discription, episodes etc. */}
-     
-      {/* <div className="episode-body">
-        {episodes.length === 0 ? (
-          <Episode
-            podcastName={podcastData.name}
-            podcastDes={podcastData.description}
-            episodes={episodes}
-          />
-        ) : null}
-      </div> */}
     </>
   );
 };
