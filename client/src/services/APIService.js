@@ -3,6 +3,7 @@ import { gql, GraphQLClient } from "graphql-request";
 const makeGQLRequest = async (query) => {
     const apiKey = process.env.REACT_APP_KEY
     const userId = process.env.REACT_APP_USER_ID
+    console.log(userId)
     const endpoint = `https://api.taddy.org`;
 
     const graphQLClient = new GraphQLClient(endpoint, {
