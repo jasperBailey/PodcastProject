@@ -1,9 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { getPodcastSearch } from "../services/APIService";
 const SearchList = () => {
-    // useEffect(()=>{
 
-    // }, [])
+    const [searchResults, setSearchResults] = useState([])
+    const [searchText, setSearchText] = useState("test")
+
+    useEffect(()=>{
+        return fetchSearchResults
+    }, [searchText])
+
+
+    const fetchSearchResults = async () => {
+        const data = await getPodcastSearch(searchText)
+        setSearchResults(data)
+    }
+
+    console.log(searchResults)
 
     return (
         <>
@@ -11,7 +24,7 @@ const SearchList = () => {
                 <div>
                     <SearchInput type="text" />
                 </div>
-                <EpisodesList> Fltered Results show here: </EpisodesList>
+                <ResultsList> Search results show here: </ResultsList>
             </FilteredSearch>
         </>
     );
@@ -31,7 +44,7 @@ export const SearchInput = styled.input`
   margin-top: 10px;
 `;
 
-export const EpisodesList = styled.ul`
+export const ResultsList = styled.ul`
   padding-left: 0;
   font-size: small;
 `;
