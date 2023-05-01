@@ -38,3 +38,23 @@ export const getPodSeries = async (uuid) => {
     const data = await makeGQLRequest(query)
     return data.getPodcastSeries
 }
+
+export const getPodcastSearch = async (searchText) => {
+
+    const query = gql`
+        {
+            searchForTerm(term:"${searchText}", filterForTypes:PODCASTSERIES, searchResultsBoostType:BOOST_POPULARITY_A_LITTLE){
+                searchId
+                podcastSeries{
+                    uuid
+                    name
+                    description
+                    imageUrl
+                }
+            }
+        }
+    `
+
+    const data = await makeGQLRequest(query)
+    return data.searchForTerm.podcastSeries
+}
