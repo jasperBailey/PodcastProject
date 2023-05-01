@@ -3,7 +3,6 @@ import { gql, GraphQLClient } from "graphql-request";
 const makeGQLRequest = async (query) => {
     const apiKey = process.env.REACT_APP_KEY
     const userId = process.env.REACT_APP_USER_ID
-    console.log(userId)
     const endpoint = `https://api.taddy.org`;
 
     const graphQLClient = new GraphQLClient(endpoint, {
@@ -18,6 +17,8 @@ const makeGQLRequest = async (query) => {
 }
 
 export const getPodSeries = async (uuid) => {
+
+    
 
     const query = gql`
         {
@@ -35,12 +36,16 @@ export const getPodSeries = async (uuid) => {
             }
         }
     `;
+
+    console.log(uuid)
     
     const data = await makeGQLRequest(query)
     return data.getPodcastSeries
 }
 
 export const getPodcastSearch = async (searchText) => {
+
+    
 
     const query = gql`
         {

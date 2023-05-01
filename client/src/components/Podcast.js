@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import "./FavPodcast.css";
+import "./Podcast.css";
 
-const FavPodcast = ({ podcast, removeFavourite }) => {
+const Podcast = ({ podcast, removeFavourite }) => {
   const handleButtonClick = () => {
     removeFavourite(podcast.uuid);
   };
@@ -20,7 +20,7 @@ const FavPodcast = ({ podcast, removeFavourite }) => {
     </>
   );
 };
-export default FavPodcast;
+export default Podcast;
 export const StyledImg = styled.img`
   width: 100px;
   height: 100px;

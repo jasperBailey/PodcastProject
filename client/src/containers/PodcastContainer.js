@@ -3,57 +3,91 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import SearchList from "../components/SearchList";
 import FavList from "../components/FavList";
-import './PodCastContainer.css'
+import { getPodSeries } from "../services/APIService";
 
 import {
-  getFavourites,
-  postFavourite,
-  putFavourite,
-  deleteFavourite,
+    getFavourites,
+    postFavourite,
+    putFavourite,
+    deleteFavourite,
 } from "../services/PodcastService";
 
 const PodcastContainer = () => {
-  const [favPods, setFavPods] = useState([]);
+    const [dbFavPods, setDbFavPods] = useState([]);
+    const [podcastsData, setPodcastsData] = useState([]);
 
-  const getFavPods = async () => {
-    const favouritesData = await getFavourites();
-    setFavPods(favouritesData);
-  };
+    useEffect(() => getDbFavPods, []);
 
-  const removeFavourite = (idToDelete) => {
-    deleteFavourite(idToDelete);
-    setFavPods(
-      favPods.filter((favPod) => {
-        return favPod._id !== idToDelete;
-      })
-    );
-  };
 
-  useEffect(() => {
-    getFavPods();
-  }, []);
-  console.log("favPods: ", favPods);
+    if (!podcastsData) {
+        fetchAllPodcastData()
+    }
 
-  return (
-    <Router>
-     <NavBar />
-      <Routes>
-        <Route exact path="/" element={<SearchList />} className="router" /> 
+    const getDbFavPods = async () => {
+        const favouritesData = await getFavourites();
+        setDbFavPods(favouritesData);
+    };
 
-        <Route
-          path="/favourites"
-          element={
-            favPods ? (
-              <FavList favPods={favPods} removeFavourite={removeFavourite} />
-            ) : null
-          }
-        />
-        {/* 
+    const fetchAllPodcastData = async () => {
+
+        const allPodcastPromises = dbFavPods.map( async (dbPodcast) => {
+            const onePodcastData = await fetchOnePodcastData(dbPodcast.uuid)
+            return onePodcastData
+        })
+
+        const allPodcastsPromise = Promise.all(allPodcastPromises)
+        const allPodcastsData = await allPodcastsPromise
+        setPodcastsData(allPodcastsData)
+    };
+
+   
+
+    const fetchOnePodcastData = async (uuid) => {
+        const data = await getPodSeries(uuid);
+        return data
+    }
+
+
+
+
+
+
+    const removeFavourite = (uuidToDelete) => {
+        const idToDelete = dbFavPods.find((favPod) => {
+            return favPod.uuid === uuidToDelete;
+        })._id;
+
+        deleteFavourite(idToDelete);
+        setDbFavPods(
+            dbFavPods.filter((favPod) => {
+                return favPod.uuid !== uuidToDelete;
+            })
+        );
+    };
+
+    return (
+        <Router>
+            <NavBar />
+            <Routes>
+                <Route exact path="/" element={<SearchList />} />
+
+                <Route
+                    path="/favourites"
+                    element={
+                        dbFavPods ? (
+                            <FavList
+                            podcastsData={podcastsData}
+                                removeFavourite={removeFavourite}
+                            />
+                        ) : null
+                    }
+                />
+                {/* 
         <Route path="/queue" element={<Queue />} />
         <Route path="liked" element={<Liked />} /> */}
-      </Routes>
-    </Router>
-  );
+            </Routes>
+        </Router>
+    );
 };
 
 export default PodcastContainer;
