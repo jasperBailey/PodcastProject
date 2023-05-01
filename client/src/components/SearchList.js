@@ -16,7 +16,7 @@ const SearchList = () => {
         setSearchResults(data)
     }
 
-    console.log(searchResults)
+    // console.log(searchResults)
 
     return (
         <>

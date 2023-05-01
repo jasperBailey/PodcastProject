@@ -6,30 +6,22 @@ import styled from "styled-components";
 import "./FavPodcast.css";
 
 const FavPodcast = ({ podcast, removeFavourite }) => {
-  const [podcastData, setPodcastData] = useState({});
-
-  const fetchPodcastData = async () => {
-    const data = await getPodSeries(podcast.uuid);
-    setPodcastData(data);
-  };
-
-  useEffect(() => fetchPodcastData, []);
-  // const navigate = useNavigate()
-
   const handleButtonClick = () => {
-    removeFavourite(podcast._id);
+    removeFavourite(podcast.uuid);
   };
+
 
   return (
     <>
       <div className="podcastList-body">
-        <StyledImg src={podcastData.imageUrl}></StyledImg>
+        <StyledImg src={podcast.imageUrl}></StyledImg>
         <h4>
-          {podcastData.name}{" "}
+          {podcast.name}{" "}
         </h4>
         <button className="deleteButton" onClick={handleButtonClick}>Remove</button>
+        </div>
         {/* add onclick to bring to this selected podcast to see more details: discription, episodes etc. */}
-      </div>
+     
       {/* <div className="episode-body">
         {episodes.length === 0 ? (
           <Episode
