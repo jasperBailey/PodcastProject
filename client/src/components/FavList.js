@@ -1,26 +1,16 @@
-import Podcast from "./Podcast";
+import FavPodcast from "./FavPodcast";
 import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 
-const FavList = ({ favPods, updatePod }) => {
-  // const [allPods, setAllPods] = useState([]);
-  // const [filteredList, setFilteredList] = useState([]);
-  //  useEffect(() => {
-  //   fetchAllPods();
-  // }, []);
+const FavList = ({ favPods, removeFavourite }) => {
 
   return (
     <>
-      <FilteredSearch>
-        <div>
-          <SearchInput type="text" />
-        </div>
-        <EpisodesList> Fltered Results show here: </EpisodesList>
-      </FilteredSearch>
+      
       <StyledDiv1 className="pods-body">
         <StyledDiv2 className="pod-body">
           {favPods.map((pod, index) => {
-            return <Podcast podcast={pod} key={index} updatePod={updatePod} />;
+            return <FavPodcast podcast={pod} key={index} removeFavourite={removeFavourite} />;
           })}
         </StyledDiv2>
       </StyledDiv1>
@@ -41,18 +31,5 @@ export const StyledDiv2 = styled.div`
   align-content: space-between;
 `;
 
-const FilteredSearch = styled.div`
-  width: 300px;
-  margin: 30px auto;
-  font-size: 1.5rem;
-`;
 
-const SearchInput = styled.input`
-  font-size: inherit;
-  border-radius: 5px;
-  margin-top: 10px;
-`;
-const EpisodesList = styled.ul`
-  padding-left: 0;
-  font-size: small;
-`;
+

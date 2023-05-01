@@ -13,7 +13,7 @@ const NavBar = () => {
             {/* Home will bring up search bar  */}
           </SidenavLi>
           <SidenavLi>
-            <NavLink to="/subscription">Subscriptions</NavLink>
+            <NavLink to="/favourites">Favourites</NavLink>
           </SidenavLi>
           <SidenavLi>
             <NavLink to="/queue">Queue</NavLink>

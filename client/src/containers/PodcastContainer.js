@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "../components/NavBar";
-import SubsList from "../components/SubsList";
+import SearchList from "../components/SearchList";
 import FavList from "../components/FavList";
 
 import {
@@ -18,17 +18,10 @@ const PodcastContainer = () => {
     const favouritesData = await getFavourites();
     setFavPods(favouritesData);
   };
-  const updatePod = (updatedPodcast) => {
-    putFavourite(updatedPodcast);
 
-    const index = favPods.findIndex((pod) => {
-      return pod.uuid === updatedPodcast.uuid;
-    });
-    const updatedPodcasts = [...favPods];
-    updatedPodcasts[index] = updatedPodcast;
-    setFavPods(updatedPodcasts);
-    console.log("when update the subscribtion: ", favPods[0].subscribed);
-  };
+  // const removeFavourite = () => {
+  //
+  //}
 
   useEffect(() => {
     getFavPods();
@@ -41,12 +34,12 @@ const PodcastContainer = () => {
         <Route
           exact
           path="/"
-          element={
-            favPods ? <FavList favPods={favPods} updatePod={updatePod} /> : null
-          }
+          element={<SearchList/>}
         />
 
-        <Route path="/subscription" element={<SubsList/>} />
+        <Route path="/favourites" element={
+            favPods ? <FavList favPods={favPods} /* removeFavourite = {removeFavourite} */ /> : null
+          } />
         {/* 
         <Route path="/queue" element={<Queue />} />
         <Route path="liked" element={<Liked />} /> */}
