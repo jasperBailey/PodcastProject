@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 import SearchList from "../components/SearchList";
 import FavList from "../components/FavList";
 import { getPodSeries } from "../services/APIService";
-import './PodcastContainer.css'
+import "./PodcastContainer.css";
 
 import {
     getFavourites,
@@ -17,54 +17,49 @@ const PodcastContainer = () => {
     const [dbFavPods, setDbFavPods] = useState([]);
     const [podcastsData, setPodcastsData] = useState([]);
 
-    useEffect(() => getDbFavPods, []);
-
-
-    if (!podcastsData) {
-        fetchAllPodcastData()
-    }
-
-    const getDbFavPods = async () => {
-        const favouritesData = await getFavourites();
-        setDbFavPods(favouritesData);
-    };
+    useEffect(() => fetchAllPodcastData, []);
 
     const fetchAllPodcastData = async () => {
+        const favouritesData = await getFavourites();
+        setDbFavPods(favouritesData);
 
-        const allPodcastPromises = dbFavPods.map( async (dbPodcast) => {
-            const onePodcastData = await fetchOnePodcastData(dbPodcast.uuid)
-            return onePodcastData
-        })
+        const allPodcastPromises = favouritesData.map(async (dbPodcast) => {
+            const onePodcastData = await fetchOnePodcastData(dbPodcast.uuid);
+            return onePodcastData;
+        });
 
-        const allPodcastsPromise = Promise.all(allPodcastPromises)
-        const allPodcastsData = await allPodcastsPromise
-        setPodcastsData(allPodcastsData)
+        const allPodcastsPromise = Promise.all(allPodcastPromises);
+        const allPodcastsData = await allPodcastsPromise;
+        setPodcastsData(allPodcastsData);
     };
-
-   
 
     const fetchOnePodcastData = async (uuid) => {
         const data = await getPodSeries(uuid);
-        return data
-    }
-
-
-
-
-
+        return data;
+    };
 
     const removeFavourite = (uuidToDelete) => {
         const idToDelete = dbFavPods.find((favPod) => {
             return favPod.uuid === uuidToDelete;
         })._id;
 
-        deleteFavourite(idToDelete);
-        setDbFavPods(
-            dbFavPods.filter((favPod) => {
+        deleteFavourite(idToDelete).then(
+            setDbFavPods(
+                dbFavPods.filter((favPod) => {
+                    return favPod.uuid !== uuidToDelete;
+                })
+            )
+        );
+        setPodcastsData(
+            podcastsData.filter((favPod) => {
                 return favPod.uuid !== uuidToDelete;
             })
-        );
+        )
     };
+    console.log("dbFavPods:")
+    console.log(dbFavPods)
+    console.log("podcastsData:")
+    console.log(podcastsData)
 
     return (
         <Router>
@@ -77,7 +72,7 @@ const PodcastContainer = () => {
                     element={
                         dbFavPods ? (
                             <FavList
-                            podcastsData={podcastsData}
+                                podcastsData={podcastsData}
                                 removeFavourite={removeFavourite}
                             />
                         ) : null
@@ -92,4 +87,3 @@ const PodcastContainer = () => {
 };
 
 export default PodcastContainer;
-
