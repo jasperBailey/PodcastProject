@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { request, gql, GraphQLClient } from "graphql-request";
+import { getPodSeries } from "../services/APIService";
 import { Link, useNavigate } from "react-router-dom";
 import Episode from "./Episode";
 import styled from "styled-components";
@@ -10,42 +10,12 @@ const Podcast = ({ podcast, updatePod }) => {
   const [buttonText, setButtonText] = useState("");
   // const navigate = useNavigate()
 
-  const apikey = process.env.REACT_APP_KEY;
-  const endpoint = `https://api.taddy.org`;
-  const graphQLClient = new GraphQLClient(endpoint, {
-    headers: {
-      "X-USER-ID": 372,
-      "X-API-KEY": apikey,
-    },
-  });
-  const query = gql`
-        {
-            getPodcastSeries(uuid: "${podcast.uuid}") {
-                uuid
-                name
-                description
-                imageUrl
-                episodes(sortOrder:LATEST,limitPerPage:10, page:1) {
-                  uuid
-                  datePublished
-                  name
-                  description
-                  imageUrl
-                  audioUrl
-                }
-            }
-        }
-    `;
-
-  const getData = async () => {
-    const data = await graphQLClient.request(query);
-    setPodcastData(data.getPodcastSeries);
-    setEpisodes(data.getPodcastSeries.episodes);
+  const fetchPodcastData = async () => {
+    const data = await getPodSeries(podcast.uuid);
+    setPodcastData(data);
   };
-  useEffect(() => {
-    getData();
-  }, []);
 
+  useEffect(() => fetchPodcastData, []);
   useEffect(() => {
     if (podcast.subscribed == true) {
       setButtonText(" - ");
@@ -61,14 +31,6 @@ const Podcast = ({ podcast, updatePod }) => {
       subscribed: !podcast.subscribed,
     });
   };
-  // podcast.subscribed === true ? (
-  //   <Link
-  //     to={{
-  //       pathname: "/subscription",
-  //       state: { podcastData },
-  //     }}
-  //   />
-  // ) : null;
 
   return (
     <>
@@ -91,14 +53,14 @@ const Podcast = ({ podcast, updatePod }) => {
         ) : null}
       </div>
       <div>
-        {/* {podcast.subscribed === true ? (
-          {/* <Link
+        {podcast.subscribed === true ? (
+          <Link
             to={{
               pathname: "/subscription",
               state: { data: { podcastData } },
             }}
-          /> */}
-        {/* ) : null} */}
+          />
+        ) : null}
       </div>
     </>
   );
