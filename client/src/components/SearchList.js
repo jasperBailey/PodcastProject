@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { getPodcastSearch } from "../services/PodcastService";
+import { getPodcastSearch } from "../services/APIService";
 
 const SearchList = () => {
   const [searchText, setSearchText] = useState("");
@@ -8,6 +8,7 @@ const SearchList = () => {
 
   const handleSearch = async () => {
     const data = await getPodcastSearch(searchText);
+    console.log(data)
     setSearchResults(data);
   };
 
