@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import SearchList from "../components/SearchList";
 import FavList from "../components/FavList";
+import AudioPlayer from "../components/AudioPlayer";
 import { getPodSeries } from "../services/APIService";
 import "./PodcastContainer.css";
 
@@ -43,46 +44,44 @@ const PodcastContainer = () => {
             return favPod.uuid === uuidToDelete;
         })._id;
 
-        deleteFavourite(idToDelete).then(
-            setDbFavPods(
-                dbFavPods.filter((favPod) => {
-                    return favPod.uuid !== uuidToDelete;
-                })
-            )
+        deleteFavourite(idToDelete);
+
+        setDbFavPods(
+            dbFavPods.filter((favPod) => favPod.uuid !== uuidToDelete)
         );
+
         setPodcastsData(
-            podcastsData.filter((favPod) => {
-                return favPod.uuid !== uuidToDelete;
-            })
-        )
+            podcastsData.filter((favPod) => favPod.uuid !== uuidToDelete)
+        );
     };
-    console.log("dbFavPods:")
-    console.log(dbFavPods)
-    console.log("podcastsData:")
-    console.log(podcastsData)
 
     return (
-        <Router>
-            <NavBar />
-            <Routes>
-                <Route exact path="/" element={<SearchList />} />
+        <>
+            <div className="app-container">
+                <Router>
+                    <NavBar />
+                    <Routes>
+                        <Route exact path="/" element={<SearchList />} />
 
-                <Route
-                    path="/favourites"
-                    element={
-                        dbFavPods ? (
-                            <FavList
-                                podcastsData={podcastsData}
-                                removeFavourite={removeFavourite}
-                            />
-                        ) : null
-                    }
-                />
-                {/* 
+                        <Route
+                            path="/favourites"
+                            element={
+                                dbFavPods ? (
+                                    <FavList
+                                        podcastsData={podcastsData}
+                                        removeFavourite={removeFavourite}
+                                    />
+                                ) : null
+                            }
+                        />
+                        {/* 
         <Route path="/queue" element={<Queue />} />
-        <Route path="liked" element={<Liked />} /> */}
-            </Routes>
-        </Router>
+    <Route path="liked" element={<Liked />} /> */}
+                    </Routes>
+                </Router>
+            </div>
+            <AudioPlayer />
+        </>
     );
 };
 
