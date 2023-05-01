@@ -1,50 +1,81 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { getPodcastSearch } from "../services/APIService";
+import { getPodcastSearch } from "../services/PodcastService";
+
 const SearchList = () => {
+  const [searchText, setSearchText] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
-    const [searchResults, setSearchResults] = useState([])
-    const [searchText, setSearchText] = useState("test")
+  const handleSearch = async () => {
+    const data = await getPodcastSearch(searchText);
+    setSearchResults(data);
+  };
 
-    useEffect(()=>{
-        return fetchSearchResults
-    }, [searchText])
-
-
-    const fetchSearchResults = async () => {
-        const data = await getPodcastSearch(searchText)
-        setSearchResults(data)
-    }
-
-    console.log(searchResults)
-
-    return (
-        <>
-            <FilteredSearch>
-                <div>
-                    <SearchInput type="text" />
-                </div>
-                <ResultsList> Search results show here: </ResultsList>
-            </FilteredSearch>
-        </>
-    );
+  return (
+    <>
+      <FilteredSearch>
+        <div>
+          <SearchInput
+            type="text"
+            placeholder="Search for a podcast..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <SearchButton onClick={handleSearch}>Search</SearchButton>
+        </div>
+      </FilteredSearch>
+      <SearchResults>
+        {searchResults.map((result) => (
+          <SearchResult key={result.uuid}>
+            <ResultTitle>{result.name}</ResultTitle>
+            <ResultDescription>{result.description}</ResultDescription>
+          </SearchResult>
+        ))}
+      </SearchResults>
+    </>
+  );
 };
 
 export default SearchList;
 
-export const FilteredSearch = styled.div`
-  width: 300px;
-  margin: 30px auto;
-  font-size: 1.5rem;
+const FilteredSearch = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 `;
 
-export const SearchInput = styled.input`
-  font-size: inherit;
-  border-radius: 5px;
-  margin-top: 10px;
+const SearchInput = styled.input`
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 2px solid #ddd;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+  flex: 1;
 `;
 
-export const ResultsList = styled.ul`
-  padding-left: 0;
-  font-size: small;
+const SearchButton = styled.button`
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+`;
+
+const SearchResults = styled.div`
+  margin-top: 1rem;
+`;
+
+const SearchResult = styled.div`
+  margin-bottom: 1rem;
+`;
+
+const ResultTitle = styled.h3`
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+`;
+
+const ResultDescription = styled.p`
+  font-size: 1rem;
 `;
