@@ -9,7 +9,9 @@ const SearchList = () => {
   const handleSearch = async () => {
     const data = await getPodcastSearch(searchText);
     setSearchResults(data);
+    
   };
+  console.log("searchResults: ", searchResults);
 
   return (
     <>
@@ -28,7 +30,7 @@ const SearchList = () => {
         {searchResults.map((result) => (
           <SearchResult key={result.uuid}>
             <ResultTitle>{result.name}</ResultTitle>
-            <ResultDescription>{result.description}</ResultDescription>
+            <ResultImg>{result.description}</ResultImg>
           </SearchResult>
         ))}
       </SearchResults>
@@ -76,6 +78,6 @@ const ResultTitle = styled.h3`
   margin-bottom: 0.5rem;
 `;
 
-const ResultDescription = styled.p`
+const ResultImg = styled.p`
   font-size: 1rem;
 `;
