@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import SearchList from "../components/SearchList";
 import FavList from "../components/FavList";
+import './PodCastContainer.css'
 
 import {
   getFavourites,
@@ -35,9 +36,9 @@ const PodcastContainer = () => {
 
   return (
     <Router>
-      <NavBar />
+     <NavBar />
       <Routes>
-        <Route exact path="/" element={<SearchList />} />
+        <Route exact path="/" element={<SearchList />} className="router" /> 
 
         <Route
           path="/favourites"
@@ -56,3 +57,4 @@ const PodcastContainer = () => {
 };
 
 export default PodcastContainer;
+
