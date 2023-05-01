@@ -1,8 +1,15 @@
-import PodcastList from "../components/PodcastList";
-import FavList from "../components/FavList";
 import React, { useState, useEffect } from "react";
-import { request, gql, GraphQLClient } from "graphql-request";
-import {getFavourites, postFavourite, putFavourite, deleteFavourite} from "../services/PodcastService";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from "../components/NavBar";
+import SubsList from "../components/SubsList";
+import FavList from "../components/FavList";
+
+import {
+  getFavourites,
+  postFavourite,
+  putFavourite,
+  deleteFavourite,
+} from "../services/PodcastService";
 
 const PodcastContainer = () => {
   const [favPods, setFavPods] = useState([]);
@@ -11,21 +18,40 @@ const PodcastContainer = () => {
     const favouritesData = await getFavourites();
     setFavPods(favouritesData);
   };
+  const updatePod = (updatedPodcast) => {
+    putFavourite(updatedPodcast);
 
-  const addFavPod = async (uuid) => {
-    
-  }
+    const index = favPods.findIndex((pod) => {
+      return pod.uuid === updatedPodcast.uuid;
+    });
+    const updatedPodcasts = [...favPods];
+    updatedPodcasts[index] = updatedPodcast;
+    setFavPods(updatedPodcasts);
+    console.log("when update the subscribtion: ", favPods[0].subscribed);
+  };
 
   useEffect(() => {
     getFavPods();
   }, []);
 
   return (
-    <>
-      <h2>Podcast Container</h2>
-      {/* <PodcastList /> */}
-      {favPods ? <FavList favPods={favPods} /> : null}
-    </>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            favPods ? <FavList favPods={favPods} updatePod={updatePod} /> : null
+          }
+        />
+
+        <Route path="/subscription" element={<SubsList/>} />
+        {/* 
+        <Route path="/queue" element={<Queue />} />
+        <Route path="liked" element={<Liked />} /> */}
+      </Routes>
+    </Router>
   );
 };
 
