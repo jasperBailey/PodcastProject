@@ -3,6 +3,7 @@ import { getPodSeries } from "../services/APIService";
 import { Link, useNavigate } from "react-router-dom";
 import Episode from "./Episode";
 import styled from "styled-components";
+import "./FavPodcast.css";
 
 const FavPodcast = ({ podcast, removeFavourite }) => {
   const [podcastData, setPodcastData] = useState({});
@@ -25,10 +26,8 @@ const FavPodcast = ({ podcast, removeFavourite }) => {
         <StyledImg src={podcastData.imageUrl}></StyledImg>
         <h4>
           {podcastData.name}{" "}
-          <button onClick={handleButtonClick}>
-            <span>❌</span> Remove
-          </button>
         </h4>
+        <button className="deleteButton" onClick={handleButtonClick}>Remove</button>
         {/* add onclick to bring to this selected podcast to see more details: discription, episodes etc. */}
       </div>
       {/* <div className="episode-body">

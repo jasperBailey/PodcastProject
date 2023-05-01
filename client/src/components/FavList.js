@@ -20,10 +20,12 @@ const FavList = ({ favPods, removeFavourite }) => {
 
 export default FavList;
 export const StyledDiv1 = styled.div`
-  margin: auto;
+  margin-right: 50px;
   padding-top: 100px;
   padding-left: 150px;
   display: flex;
+  flex-wrap: wrap;
+  padding-right: 150px;
 `;
 export const StyledDiv2 = styled.div`
   display: flex;
