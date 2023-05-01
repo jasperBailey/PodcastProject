@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 import SearchList from "../components/SearchList";
 import FavList from "../components/FavList";
 import { getPodSeries } from "../services/APIService";
+import './PodcastContainer.css'
 
 import {
     getFavourites,
