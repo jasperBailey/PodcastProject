@@ -55,10 +55,15 @@ const PodcastContainer = () => {
   };
 
   //   podcastToAdd is API object; need to update dbFavPods and podcastsData
-  const addToFavouriteDB = (podcastToAdd) => {
-    postFavourite(podcastToAdd).then((savedPodcast) =>
-      setDbFavPods([...dbFavPods, savedPodcast])
-    );
+  const addToFavourite = (podcastToAdd) => {
+    const podcastToAddDB = {
+      uuid: podcastToAdd.uuid,
+    };
+
+    setDbFavPods([...dbFavPods, podcastToAddDB]);
+    setPodcastsData([...podcastsData, podcastToAdd]);
+    // console.log("dbFavPods: ", dbFavPods);
+    // console.log("podcastsData: ", podcastsData);
   };
 
   return (
@@ -67,7 +72,11 @@ const PodcastContainer = () => {
         <Router>
           <NavBar />
           <Routes>
-            <Route exact path="/" element={<SearchList />} />
+            <Route
+              exact
+              path="/"
+              element={<SearchList addToFavourite={addToFavourite} />}
+            />
 
             <Route
               path="/favourites"
