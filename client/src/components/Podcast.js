@@ -1,18 +1,25 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-const Podcast = ({ podcast, addFavourite }) => {
-  // const handleButtonClick = () => {
-  //   removeFavourite(podcast.uuid);
-  // };
+const Podcast = ({ podcast, addToFavourite }) => {
+  const [subsButtonMsg, setSubsButtonMsg] = useState("subscribe");
+  const handleClickButton = (podcast) => {
+    addToFavourite(podcast);
+    setSubsButtonMsg("subscribed");
+  };
 
   return (
     <>
       <div className="searchedPod-body">
         <StyledImg src={podcast.imageUrl}></StyledImg>
         <h4>{podcast.name}</h4>
-        <StyledAddButton className="deleteButton">Add</StyledAddButton>
+        <StyledAddButton
+          className="deleteButton"
+          onClick={() => handleClickButton(podcast)}
+        >
+          {subsButtonMsg}
+        </StyledAddButton>
       </div>
-      {/* add onclick to bring to this selected podcast to see more details: discription, episodes etc. */}
     </>
   );
 };
@@ -42,4 +49,4 @@ export const StyledAddButton = styled.div`
   color: #fff;
   background-color: black;
   height: 20px;
-`
+`;

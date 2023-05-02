@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { getPodcastSearch } from "../services/APIService";
 import Podcast from "./Podcast";
-const SearchList = () => {
+const SearchList = ({ addToFavourite }) => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -10,10 +10,16 @@ const SearchList = () => {
     const data = await getPodcastSearch(searchText);
     setSearchResults(data);
   };
-  console.log("searchResults: ", searchResults);
+  // console.log("searchResults: ", searchResults);
 
   const resultPodcast = searchResults.map((searchPod, index) => {
-    return <Podcast key={index} podcast={searchPod} />;
+    return (
+      <Podcast
+        key={index}
+        podcast={searchPod}
+        addToFavourite={addToFavourite}
+      />
+    );
   });
 
   return (
