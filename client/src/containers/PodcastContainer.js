@@ -93,9 +93,6 @@ const PodcastContainer = () => {
               path="series/:id"
               element={<Series setNowPlaying={setNowPlaying} />}
             />
-            {/* 
-        <Route path="/queue" element={<Queue />} />
-        <Route path="liked" element={<Liked />} /> */}
           </Routes>
         </Router>
       </div>
