@@ -15,8 +15,9 @@ import {
 } from "../services/PodcastService";
 
 const PodcastContainer = () => {
-  const [dbFavPods, setDbFavPods] = useState([]);
-  const [podcastsData, setPodcastsData] = useState([]);
+    const [dbFavPods, setDbFavPods] = useState([]);
+    const [podcastsData, setPodcastsData] = useState([]);
+    const [nowPlaying, setNowPlaying] = useState(null);
 
   useEffect(() => fetchAllPodcastData, []);
 
@@ -89,12 +90,13 @@ const PodcastContainer = () => {
             {/* 
         <Route path="/queue" element={<Queue />} />
         <Route path="liked" element={<Liked />} /> */}
-          </Routes>
-        </Router>
-      </div>
-      <AudioPlayer />
-    </>
-  );
+                    </Routes>
+                </Router>
+            </div>
+            <AudioPlayer nowPlaying={nowPlaying} />
+        </>
+    );
+        
 };
 
 export default PodcastContainer;
