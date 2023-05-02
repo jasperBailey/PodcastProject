@@ -54,17 +54,11 @@ const PodcastContainer = () => {
     );
   };
 
-  const addToFavourite = (podcastToAdd) => {
-    // need to convert api data to db data
-    const podcastToAddDB = {
-      uuid: podcastToAdd.uuid,
-    };
-    postFavourite(podcastToAddDB).then((savedPodcast) => {
-      return setDbFavPods([...dbFavPods, savedPodcast]);
-    });
-    setPodcastsData([...podcastsData, podcastToAdd]);
-    console.log("Database Pods: ", dbFavPods);
-    console.log("Data pods", podcastsData);
+  //   podcastToAdd is API object; need to update dbFavPods and podcastsData
+  const addToFavouriteDB = (podcastToAdd) => {
+    postFavourite(podcastToAdd).then((savedPodcast) =>
+      setDbFavPods([...dbFavPods, savedPodcast])
+    );
   };
 
   return (
@@ -73,11 +67,7 @@ const PodcastContainer = () => {
         <Router>
           <NavBar />
           <Routes>
-            <Route
-              exact
-              path="/"
-              element={<SearchList addToFavourite={addToFavourite} />}
-            />
+            <Route exact path="/" element={<SearchList />} />
 
             <Route
               path="/favourites"
@@ -90,7 +80,10 @@ const PodcastContainer = () => {
                 ) : null
               }
             />
-            <Route path="series/:id" element={<Series />} />
+            <Route
+              path="series/:id"
+              element={<Series setNowPlaying={setNowPlaying} />}
+            />
             {/* 
         <Route path="/queue" element={<Queue />} />
         <Route path="liked" element={<Liked />} /> */}

@@ -27,6 +27,8 @@ const Series = ({ setNowPlaying }) => {
                     <Episode
                         key={index}
                         episode={episode}
+                        seriesName={seriesData.name}
+                        seriesImageUrl={seriesData.imageUrl}
                         setNowPlaying={setNowPlaying}
                     />
                 ))}

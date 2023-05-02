@@ -8,16 +8,23 @@ import {
     faCirclePlay,
 } from "@fortawesome/free-solid-svg-icons";
 
-const AudioPlayer = () => {
+const AudioPlayer = ({ nowPlaying }) => {
     return (
         <div className="audio-player-banner">
             <img
                 id="current-episode-img"
-                src="https://play-lh.googleusercontent.com/O8mvDQlw4AwmGfUrh4lviZD_PwwhRHz2etA25F77SbXrm3qEHOt2826aNkKar4D0yw"
+                src={
+                    nowPlaying
+                        ? nowPlaying.imageUrl
+                        : "https://play-lh.googleusercontent.com/O8mvDQlw4AwmGfUrh4lviZD_PwwhRHz2etA25F77SbXrm3qEHOt2826aNkKar4D0yw"
+                }
             />
             <div id="non-img-container">
                 <div className="audio-player">
-                    <h3 id="current-episode">Now playing: Episode</h3>
+                    <h3 id="current-episode">
+                        Now playing:{" "}
+                        {nowPlaying ? nowPlaying.name : "No episode selected!"}
+                    </h3>
                     <section className="controls">
                         <FontAwesomeIcon icon={faBackwardStep} size="xl" />
                         <FontAwesomeIcon icon={faArrowRotateLeft} size="xl" />
@@ -25,19 +32,13 @@ const AudioPlayer = () => {
                         <FontAwesomeIcon icon={faArrowRotateRight} size="xl" />
                         <FontAwesomeIcon icon={faForwardStep} size="xl" />
                     </section>
-                    <h4 id="current-episode-author">Author</h4>
+                    <h4 id="current-episode-author">
+                        {nowPlaying ? nowPlaying.series : "No series"}
+                    </h4>
                 </div>
                 <div id="description-container">
                     <p id="current-episode-description">
-                        Episode Description Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad
-                        minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                        dolor in reprehenderit in voluptate velit esse cillum
-                        dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum.
+                        {nowPlaying ? nowPlaying.description : " "}
                     </p>
                 </div>
             </div>
