@@ -67,6 +67,7 @@ const PodcastContainer = () => {
         <>
             <div className="app-container">
                 <Router>
+                <div className="logo"></div>
                     <NavBar />
                     <Routes>
                         <Route exact path="/" element={<SearchList />} />

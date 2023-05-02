@@ -52,7 +52,7 @@ const SearchInput = styled.input`
 `;
 const SearchButton = styled.button`
   font-size: 1rem;
-  padding: 0.25rem 0.5rem; /* reduce the padding */
+  padding: 0.5rem 1rem; /* reduce the padding */
   background-color: black;
   color: white;
   border: none;
