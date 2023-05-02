@@ -1,30 +1,22 @@
 import React, { useState, useEffect } from "react";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    useParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import SearchList from "../components/SearchList";
 import FavList from "../components/FavList";
 import AudioPlayer from "../components/AudioPlayer";
-import Episodes from "../components/Episodes";
+import Series from "../components/Series";
 import { getPodSeries } from "../services/APIService";
 import "./PodcastContainer.css";
 
 import {
     getFavourites,
     postFavourite,
-    putFavourite,
     deleteFavourite,
 } from "../services/PodcastService";
 
 const PodcastContainer = () => {
     const [dbFavPods, setDbFavPods] = useState([]);
     const [podcastsData, setPodcastsData] = useState([]);
-    const [selectedPod, setSelectedPod] = useState(null);
-    //   selectedPod
 
     useEffect(() => fetchAllPodcastData, []);
 
@@ -63,21 +55,6 @@ const PodcastContainer = () => {
         );
     };
 
-    // console.log("dbFavPods:", dbFavPods);
-    // console.log("podcastsData:", podcastsData);
-
-    const handleOnClick = (podcast) => {
-        const findPodcast = podcastsData.find((podData) => {
-            return (podData.uuid = podcast.uuid);
-        });
-        if (!findPodcast) {
-            return;
-        } else {
-            setSelectedPod(podcast);
-        }
-    };
-    console.log("selectedPod: ", selectedPod);
-
     return (
         <>
             <div className="app-container">
@@ -93,18 +70,13 @@ const PodcastContainer = () => {
                                     <FavList
                                         podcastsData={podcastsData}
                                         removeFavourite={removeFavourite}
-                                        handleOnClick={handleOnClick}
                                     />
                                 ) : null
                             }
                         />
                         <Route
-                            path="/episode"
-                            element={
-                                selectedPod ? (
-                                    <Episodes selectedPod={selectedPod} />
-                                ) : null
-                            }
+                            path="series/:id"
+                            element={<Series/>}
                         />
                         {/* 
         <Route path="/queue" element={<Queue />} />
