@@ -1,4 +1,4 @@
-.router{
+/* .router{
     font-size: 100px;
     cursor: pointer;
     border: black;
@@ -34,8 +34,8 @@
     touch-action: manipulation;
     will-change: transform;
     box-shadow:
-    inset 60px 0 120pxf greenyellow,  /* left magenta */
-    inset -60px 0 120px greenyellow ; /* right cyan */
+    inset 60px 0 120pxf greenyellow, 
+    inset -60px 0 120px greenyellow ; 
 }
 
 a{
@@ -45,4 +45,15 @@ text-decoration: none;
 
 .app-container {
     margin-top: 2vh;
-}
+} */
+
+.logo {
+    width: 250px;
+    height: 250px;
+    background-image: url("./img/logo4.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    }
