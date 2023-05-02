@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import "./Podcast.css";
 
 const Podcast = ({ podcast, addFavourite }) => {
   // const handleButtonClick = () => {
