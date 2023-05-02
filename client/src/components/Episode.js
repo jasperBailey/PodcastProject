@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
-const Episode = ( { episode, setNowPlaying } ) => {
-
+const Episode = ({ episode, setNowPlaying, seriesName, seriesImageUrl }) => {
     const handlePlayEpisode = () => {
-        setNowPlaying(episode)
-    }
+        setNowPlaying({
+            ...episode,
+            series: seriesName,
+            imageUrl: seriesImageUrl,
+        });
+    };
 
     return (
         <StyledUl>
