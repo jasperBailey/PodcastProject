@@ -15,9 +15,9 @@ import {
 } from "../services/PodcastService";
 
 const PodcastContainer = () => {
-    const [dbFavPods, setDbFavPods] = useState([]);
-    const [podcastsData, setPodcastsData] = useState([]);
-    const [nowPlaying, setNowPlaying] = useState(null);
+  const [dbFavPods, setDbFavPods] = useState([]);
+  const [podcastsData, setPodcastsData] = useState([]);
+  const [nowPlaying, setNowPlaying] = useState(null);
 
   useEffect(() => fetchAllPodcastData, []);
 
@@ -55,12 +55,16 @@ const PodcastContainer = () => {
   };
 
   const addToFavourite = (podcastToAdd) => {
-    postFavourite(podcastToAdd).then((savedPodcast) =>
-      setDbFavPods([...dbFavPods, savedPodcast])
-    );
+    // need to convert api data to db data
+    const podcastToAddDB = {
+      uuid: podcastToAdd.uuid,
+    };
+    postFavourite(podcastToAddDB).then((savedPodcast) => {
+      return setDbFavPods([...dbFavPods, savedPodcast]);
+    });
     setPodcastsData([...podcastsData, podcastToAdd]);
-    // console.log("Database Pods: ", dbFavPods);
-    // console.log("Data pods", podcastsData);
+    console.log("Database Pods: ", dbFavPods);
+    console.log("Data pods", podcastsData);
   };
 
   return (
@@ -90,13 +94,12 @@ const PodcastContainer = () => {
             {/* 
         <Route path="/queue" element={<Queue />} />
         <Route path="liked" element={<Liked />} /> */}
-                    </Routes>
-                </Router>
-            </div>
-            <AudioPlayer nowPlaying={nowPlaying} />
-        </>
-    );
-        
+          </Routes>
+        </Router>
+      </div>
+      <AudioPlayer nowPlaying={nowPlaying} />
+    </>
+  );
 };
 
 export default PodcastContainer;

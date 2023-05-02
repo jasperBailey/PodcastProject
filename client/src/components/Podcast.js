@@ -13,13 +13,12 @@ const Podcast = ({ podcast, addToFavourite }) => {
       <div className="searchedPod-body">
         <StyledImg src={podcast.imageUrl}></StyledImg>
         <h4>{podcast.name}</h4>
-        <button
+        <StyledAddButton
           className="deleteButton"
           onClick={() => handleClickButton(podcast)}
         >
           {subsButtonMsg}
-        </button>
-        <StyledAddButton className="deleteButton">Add</StyledAddButton>
+        </StyledAddButton>
       </div>
     </>
   );
@@ -50,4 +49,4 @@ export const StyledAddButton = styled.div`
   color: #fff;
   background-color: black;
   height: 20px;
-`
+`;
