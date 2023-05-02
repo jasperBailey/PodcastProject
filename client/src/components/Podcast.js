@@ -3,11 +3,6 @@ import styled from "styled-components";
 import "./Podcast.css";
 
 const Podcast = ({ podcast, addToFavourite }) => {
-  const [subsButtonMsg, setSubsButtonMsg] = useState("subscribe");
-  const handleClickButton = (podcast) => {
-    addToFavourite(podcast);
-    setSubsButtonMsg("subscribed");
-  };
 
   return (
     <>
