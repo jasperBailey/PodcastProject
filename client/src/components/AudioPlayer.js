@@ -6,9 +6,14 @@ import {
     faArrowRotateLeft,
     faArrowRotateRight,
     faCirclePlay,
+    faCirclePause,
 } from "@fortawesome/free-solid-svg-icons";
 
-const AudioPlayer = ({ nowPlaying }) => {
+const AudioPlayer = ({ nowPlaying, isPlaying, setIsPlaying }) => {
+    const handleTogglePlay = () => {
+        setIsPlaying(!isPlaying)
+    };
+
     return (
         <div className="audio-player-banner">
             <img
@@ -28,7 +33,11 @@ const AudioPlayer = ({ nowPlaying }) => {
                     <section className="controls">
                         <FontAwesomeIcon icon={faBackwardStep} size="xl" />
                         <FontAwesomeIcon icon={faArrowRotateLeft} size="xl" />
-                        <FontAwesomeIcon icon={faCirclePlay} size="2xl" />
+                        <FontAwesomeIcon
+                            onClick={handleTogglePlay}
+                            icon={isPlaying ? faCirclePause : faCirclePlay}
+                            size="2xl"
+                        />
                         <FontAwesomeIcon icon={faArrowRotateRight} size="xl" />
                         <FontAwesomeIcon icon={faForwardStep} size="xl" />
                     </section>
