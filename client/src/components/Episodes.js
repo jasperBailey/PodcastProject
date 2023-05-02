@@ -4,7 +4,7 @@ const Episodes = ({ selectedPod }) => {
     return (
       <StyledUl>
         <StyledLi>{episode.name}</StyledLi>
-        <StyledLi>{episode.description}</StyledLi>
+
         <StyledLi>
           <AudioDiv>
             <audio src={episode.audioUrl} controls />
