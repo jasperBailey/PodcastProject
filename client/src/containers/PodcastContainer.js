@@ -15,8 +15,9 @@ import {
 } from "../services/PodcastService";
 
 const PodcastContainer = () => {
-  const [dbFavPods, setDbFavPods] = useState([]);
-  const [podcastsData, setPodcastsData] = useState([]);
+    const [dbFavPods, setDbFavPods] = useState([]);
+    const [podcastsData, setPodcastsData] = useState([]);
+    const [nowPlaying, setNowPlaying] = useState(null);
 
   useEffect(() => fetchAllPodcastData, []);
 
@@ -53,44 +54,53 @@ const PodcastContainer = () => {
     );
   };
 
-//   podcastToAdd is API object; need to update dbFavPods and podcastsData
+  //   podcastToAdd is API object; need to update dbFavPods and podcastsData
   const addToFavouriteDB = (podcastToAdd) => {
     postFavourite(podcastToAdd).then((savedPodcast) =>
       setDbFavPods([...dbFavPods, savedPodcast])
     );
   };
 
+    return (
+        <>
+            <div className="app-container">
+                <Router>
+                    <NavBar />
+                    <Routes>
+                        <Route
+                            exact
+                            path="/"
+                            element={
+                                <SearchList setNowPlaying={setNowPlaying} />
+                            }
+                        />
 
-
-  return (
-    <>
-      <div className="app-container">
-        <Router>
-          <NavBar />
-          <Routes>
-            <Route exact path="/" element={<SearchList />} />
-
-            <Route
-              path="/favourites"
-              element={
-                dbFavPods ? (
-                  <FavList
-                    podcastsData={podcastsData}
-                    removeFavourite={removeFavourite}
-                  />
-                ) : null
-              }
-            />
-            <Route path="series/:id" element={<Series />} />
-            {/* 
+                        <Route
+                            path="/favourites"
+                            element={
+                                dbFavPods ? (
+                                    <FavList
+                                        podcastsData={podcastsData}
+                                        removeFavourite={removeFavourite}
+                                        setNowPlaying={setNowPlaying}
+                                    />
+                                ) : null
+                            }
+                        />
+                        <Route
+                            path="series/:id"
+                            element={<Series setNowPlaying={setNowPlaying} />}
+                        />
+                        {/* 
         <Route path="/queue" element={<Queue />} />
         <Route path="liked" element={<Liked />} /> */}
-          </Routes>
-        </Router>
-      </div>
-      <AudioPlayer />
-    </>
-  );
+                    </Routes>
+                </Router>
+            </div>
+            <AudioPlayer nowPlaying={nowPlaying} />
+        </>
+    );
+        
 };
 
 export default PodcastContainer;
