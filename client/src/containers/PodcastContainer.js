@@ -18,7 +18,6 @@ const PodcastContainer = () => {
     const [dbFavPods, setDbFavPods] = useState([]);
     const [podcastsData, setPodcastsData] = useState([]);
     const [nowPlaying, setNowPlaying] = useState(null);
-    const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => fetchAllPodcastData, []);
 
@@ -96,8 +95,6 @@ const PodcastContainer = () => {
             </div>
             <AudioPlayer
                 nowPlaying={nowPlaying}
-                isPlaying={isPlaying}
-                setIsPlaying={setIsPlaying}
             />
         </>
     );

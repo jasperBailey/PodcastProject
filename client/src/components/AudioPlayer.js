@@ -8,11 +8,34 @@ import {
     faCirclePlay,
     faCirclePause,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
-const AudioPlayer = ({ nowPlaying, isPlaying, setIsPlaying }) => {
+const AudioPlayer = ({ nowPlaying }) => {
+    const [isPlaying, setIsPlaying] = useState(false)
+
+    const audioElement = new Audio()
+    if (nowPlaying) {
+        audioElement.src = nowPlaying.audioUrl
+    }
+
+    // audioElement.currentTime;
+    // audioElement.ended;
+    // audioElement.duration;
+
     const handleTogglePlay = () => {
-        setIsPlaying(!isPlaying)
+        if(audioElement.paused) {
+            setIsPlaying(true)
+            audioElement.play()
+            console.log("starting audio")
+
+        } else {
+            setIsPlaying(false)
+            audioElement.pause()
+            console.log("stopping audio")
+        }
     };
+
+    console.log(audioElement.paused)
 
     return (
         <div className="audio-player-banner">
@@ -35,7 +58,7 @@ const AudioPlayer = ({ nowPlaying, isPlaying, setIsPlaying }) => {
                         <FontAwesomeIcon icon={faArrowRotateLeft} size="xl" />
                         <FontAwesomeIcon
                             onClick={handleTogglePlay}
-                            icon={isPlaying ? faCirclePause : faCirclePlay}
+                            icon={audioElement.paused ? faCirclePlay : faCirclePause}
                             size="2xl"
                         />
                         <FontAwesomeIcon icon={faArrowRotateRight} size="xl" />
