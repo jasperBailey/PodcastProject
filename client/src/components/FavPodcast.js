@@ -3,30 +3,30 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 const FavPodcast = ({ podcast, removeFavourite, handleOnClick }) => {
-    const handleButtonClick = () => {
-        removeFavourite(podcast.uuid);
-    };
+  const handleButtonClick = () => {
+    removeFavourite(podcast.uuid);
+  };
 
-    return (
-        <div className="podcastList-body">
-            <StyledImg src={podcast.imageUrl}></StyledImg>
-            <Link to={`/series/${podcast.uuid}`}>
-                <h4>{podcast.name}</h4>
-            </Link>
-            <DeletButton className="deleteButton" onClick={handleButtonClick}>
-                Remove
-            </DeletButton>
-        </div>
-    );
+  return (
+    <FavPodcastBox>
+      <StyledImg src={podcast.imageUrl}></StyledImg>
+      <Link to={`/series/${podcast.uuid}`}>
+        <h4>{podcast.name}</h4>
+      </Link>
+      <DeletButton className="deleteButton" onClick={handleButtonClick}>
+        Remove
+      </DeletButton>
+    </FavPodcastBox>
+  );
 };
 export default FavPodcast;
 export const StyledImg = styled.img`
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 `;
 
 export const DeletButton = styled.div`
-display: inline-block;
+  display: inline-block;
   outline: none;
   cursor: pointer;
   font-size: 14px;
@@ -45,4 +45,16 @@ display: inline-block;
   color: #fff;
   background-color: red;
   height: 20px;
+`;
+
+export const FavPodcastBox = styled.div`
+    color: red;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+
 `
