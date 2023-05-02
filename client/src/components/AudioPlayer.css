@@ -1,0 +1,28 @@
+.audio-player-banner {
+    height: 144px;
+    width: 100vw;
+    position: fixed;
+    /* padding: 10px 10px 0px 10px; */
+    bottom: 0;
+    width: 100%;
+    background: rgb(255, 255, 255);
+    display:flex;
+    justify-content: center;
+}
+.controls {
+    height: 8vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls svg {
+    padding: 1vh;
+}
+
+#current-episode {
+    margin: 1vh;
+}
+#current-episode-author {
+    margin: 1vh;
+}

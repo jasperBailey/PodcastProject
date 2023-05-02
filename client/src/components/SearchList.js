@@ -43,7 +43,6 @@ export default SearchList;
 const FilteredSearch = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
 `;
 
 const SearchInput = styled.input`
