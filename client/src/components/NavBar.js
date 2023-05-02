@@ -9,17 +9,17 @@ const NavBar = () => {
       <nav>
         <SidenavUl>
           <SidenavLi>
-            <NavLink to="/">Home</NavLink>
+            <StyledNavLink to="/">HOME</StyledNavLink>
             {/* Home will bring up search bar  */}
           </SidenavLi>
           <SidenavLi>
-            <NavLink to="/favourites">Favourites</NavLink>
+            <StyledNavLink to="/favourites">FAVOURITES</StyledNavLink>
           </SidenavLi>
           <SidenavLi>
-            <NavLink to="/queue">Queue</NavLink>
+            <StyledNavLink to="/queue">QUEUE</StyledNavLink>
           </SidenavLi>
           <SidenavLi>
-            <NavLink to="/liked">Liked</NavLink>
+            <StyledNavLink to="/liked">LIKED</StyledNavLink>
           </SidenavLi>
         </SidenavUl>
       </nav>
@@ -28,23 +28,34 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
 export const SidenavDiv = styled.div`
   height: 100%;
   width: 0;
-  position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
+  right: 0; /* position to the right */
   background-color: #111;
-  padding-top: 10px;
+  margin-top: 40px;
+  margin-left: 700px;
 `;
+
 export const SidenavUl = styled.ul`
-list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap; /* prevent wrapping */
+  justify-content: flex-end; /* align to the right */
 `;
+
 export const SidenavLi = styled.li`
   color: black;
   padding-left: 0;
+  margin-right: 15px; /* add some space between links */
+`;
+
+export const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
 `;
