@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { getPodcastSearch } from "../services/APIService";
-import Podcast from "./Podcast";
+import SearchedPodcast from "./SearchedPodcast";
 const SearchList = ({ addToFavourite }) => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -14,7 +14,7 @@ const SearchList = ({ addToFavourite }) => {
 
   const resultPodcast = searchResults.map((searchPod, index) => {
     return (
-      <Podcast
+      <SearchedPodcast
         key={index}
         podcast={searchPod}
         addToFavourite={addToFavourite}

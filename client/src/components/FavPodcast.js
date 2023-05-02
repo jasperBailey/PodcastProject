@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import * as React from "react";
-import { Link } from "react-router-dom";
 
-const FavPodcast = ({ podcast, removeFavourite, handleOnClick }) => {
+import Podcast from "./Podcast";
+
+const FavPodcast = ({ podcast, removeFavourite }) => {
   const handleButtonClick = () => {
     removeFavourite(podcast.uuid);
   };
 
   return (
     <div className="podcastList-body">
-      <StyledImg src={podcast.imageUrl}></StyledImg>
-      <Link to={`/series/${podcast.uuid}`}>
+      {/* <StyledImg src={podcast.imageUrl}></StyledImg> */}
+      <Podcast podcast={podcast} />
+      {/* <Link to={`/series/${podcast.uuid}`}>
         <h4>{podcast.name}</h4>
-      </Link>
+      </Link> */}
       <DeletButton className="deleteButton" onClick={handleButtonClick}>
         Remove
       </DeletButton>
@@ -20,10 +22,7 @@ const FavPodcast = ({ podcast, removeFavourite, handleOnClick }) => {
   );
 };
 export default FavPodcast;
-export const StyledImg = styled.img`
-  width: 100px;
-  height: 100px;
-`;
+
 
 export const DeletButton = styled.div`
   display: inline-block;
