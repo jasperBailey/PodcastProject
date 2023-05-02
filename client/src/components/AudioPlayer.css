@@ -7,8 +7,30 @@
     width: 100%;
     background: rgb(255, 255, 255);
     display:flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.audio-player {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+#current-episode-img {
+    height:144px;
+}
+
+#current-episode-description {
+    font-size:smaller;
+}
+
+#description-container {
+    max-width: 20rem;
+    max-height: 144px;
+    text-align: left;
+    margin-right: 5vw;
+}
+
 .controls {
     height: 8vh;
     display:flex;
