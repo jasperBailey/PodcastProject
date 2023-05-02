@@ -48,8 +48,8 @@ text-decoration: none;
 } */
 
 .logo {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     background-image: url("./img/logo4.png");
     background-size: contain;
     background-repeat: no-repeat;
