@@ -10,19 +10,16 @@ const FavPodcast = ({ podcast, removeFavourite }) => {
 
   return (
     <div className="podcastList-body">
-      {/* <StyledImg src={podcast.imageUrl}></StyledImg> */}
       <Podcast podcast={podcast} />
-      {/* <Link to={`/series/${podcast.uuid}`}>
-        <h4>{podcast.name}</h4>
-      </Link> */}
-      <DeletButton className="deleteButton" onClick={handleButtonClick}>
-        Remove
-      </DeletButton>
+      <FavPodcastBox>
+        <DeletButton className="deleteButton" onClick={handleButtonClick}>
+          Remove
+        </DeletButton>
+      </FavPodcastBox>
     </div>
   );
 };
 export default FavPodcast;
-
 
 export const DeletButton = styled.div`
   display: inline-block;
@@ -44,4 +41,15 @@ export const DeletButton = styled.div`
   color: #fff;
   background-color: red;
   height: 20px;
+`;
+
+export const FavPodcastBox = styled.div`
+  color: red;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
 `;

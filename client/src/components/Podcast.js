@@ -3,6 +3,7 @@ import styled from "styled-components";
 const Podcast = ({ podcast }) => {
   return (
     <>
+    
       <StyledImg src={podcast.imageUrl}></StyledImg>
       <Link to={`/series/${podcast.uuid}`}>
         <h4>{podcast.name}</h4>

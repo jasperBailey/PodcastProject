@@ -13,8 +13,6 @@ const SearchedPodcast = ({ podcast, addToFavourite }) => {
     <>
       <div className="searchedPod-body">
         <Podcast podcast={podcast} />
-        {/* <StyledImg src={podcast.imageUrl}></StyledImg>
-        <h4>{podcast.name}</h4> */}
         <StyledAddButton
           className="deleteButton"
           onClick={() => handleClickButton(podcast)}
