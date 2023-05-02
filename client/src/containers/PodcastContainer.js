@@ -55,6 +55,11 @@ const PodcastContainer = () => {
   };
 
   const addToFavourite = (podcastToAdd) => {
+    const findDuplicate = dbFavPods.find((pod) => {
+      return pod.uuid === podcastToAdd.uuid;
+    });
+    if (findDuplicate) return 
+
     const podcastToAddDB = {
       uuid: podcastToAdd.uuid,
     };
@@ -64,14 +69,13 @@ const PodcastContainer = () => {
     });
     setDbFavPods([...dbFavPods, podcastToAddDB]);
     setPodcastsData([...podcastsData, podcastToAdd]);
-  
   };
 
   return (
     <>
       <div className="app-container">
         <Router>
-        <div className="logo"></div>
+          <div className="logo"></div>
           <NavBar />
           <Routes>
             <Route
