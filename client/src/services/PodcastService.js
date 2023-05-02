@@ -27,8 +27,8 @@ export const putFavourite = (podcast) => {
   });
 };
 
-export const deleteFavourite = (id) => {
-  return fetch(baseURL + id, {
+export const deleteFavourite = (_id) => {
+  return fetch(baseURL + _id, {
     method: "DELETE",
   });
 };
