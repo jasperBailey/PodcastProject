@@ -17,6 +17,7 @@ import {
 const PodcastContainer = () => {
     const [dbFavPods, setDbFavPods] = useState([]);
     const [podcastsData, setPodcastsData] = useState([]);
+    const [nowPlaying, setNowPlaying] = useState(null);
 
     useEffect(() => fetchAllPodcastData, []);
 
@@ -61,7 +62,13 @@ const PodcastContainer = () => {
                 <Router>
                     <NavBar />
                     <Routes>
-                        <Route exact path="/" element={<SearchList />} />
+                        <Route
+                            exact
+                            path="/"
+                            element={
+                                <SearchList setNowPlaying={setNowPlaying} />
+                            }
+                        />
 
                         <Route
                             path="/favourites"
@@ -70,13 +77,14 @@ const PodcastContainer = () => {
                                     <FavList
                                         podcastsData={podcastsData}
                                         removeFavourite={removeFavourite}
+                                        setNowPlaying={setNowPlaying}
                                     />
                                 ) : null
                             }
                         />
                         <Route
                             path="series/:id"
-                            element={<Series/>}
+                            element={<Series setNowPlaying={setNowPlaying} />}
                         />
                         {/* 
         <Route path="/queue" element={<Queue />} />
@@ -84,7 +92,7 @@ const PodcastContainer = () => {
                     </Routes>
                 </Router>
             </div>
-            <AudioPlayer />
+            <AudioPlayer nowPlaying={nowPlaying} />
         </>
     );
 };
