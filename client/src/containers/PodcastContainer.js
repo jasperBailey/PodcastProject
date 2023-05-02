@@ -9,9 +9,9 @@ import { getPodSeries } from "../services/APIService";
 import "./PodcastContainer.css";
 
 import {
-    getFavourites,
-    postFavourite,
-    deleteFavourite,
+  getFavourites,
+  postFavourite,
+  deleteFavourite,
 } from "../services/PodcastService";
 
 const PodcastContainer = () => {
@@ -19,42 +19,47 @@ const PodcastContainer = () => {
     const [podcastsData, setPodcastsData] = useState([]);
     const [nowPlaying, setNowPlaying] = useState(null);
 
-    useEffect(() => fetchAllPodcastData, []);
+  useEffect(() => fetchAllPodcastData, []);
 
-    const fetchAllPodcastData = async () => {
-        const favouritesData = await getFavourites();
-        setDbFavPods(favouritesData);
+  const fetchAllPodcastData = async () => {
+    const favouritesData = await getFavourites();
+    setDbFavPods(favouritesData);
 
-        const allPodcastPromises = favouritesData.map(async (dbPodcast) => {
-            const onePodcastData = await fetchOnePodcastData(dbPodcast.uuid);
-            return onePodcastData;
-        });
+    const allPodcastPromises = favouritesData.map(async (dbPodcast) => {
+      const onePodcastData = await fetchOnePodcastData(dbPodcast.uuid);
+      return onePodcastData;
+    });
 
-        const allPodcastsPromise = Promise.all(allPodcastPromises);
-        const allPodcastsData = await allPodcastsPromise;
-        setPodcastsData(allPodcastsData);
-    };
+    const allPodcastsPromise = Promise.all(allPodcastPromises);
+    const allPodcastsData = await allPodcastsPromise;
+    setPodcastsData(allPodcastsData);
+  };
 
-    const fetchOnePodcastData = async (uuid) => {
-        const data = await getPodSeries(uuid);
-        return data;
-    };
+  const fetchOnePodcastData = async (uuid) => {
+    const data = await getPodSeries(uuid);
+    return data;
+  };
 
-    const removeFavourite = (uuidToDelete) => {
-        const idToDelete = dbFavPods.find((favPod) => {
-            return favPod.uuid === uuidToDelete;
-        })._id;
+  const removeFavourite = (uuidToDelete) => {
+    const idToDelete = dbFavPods.find((favPod) => {
+      return favPod.uuid === uuidToDelete;
+    })._id;
 
-        deleteFavourite(idToDelete);
+    deleteFavourite(idToDelete);
 
-        setDbFavPods(
-            dbFavPods.filter((favPod) => favPod.uuid !== uuidToDelete)
-        );
+    setDbFavPods(dbFavPods.filter((favPod) => favPod.uuid !== uuidToDelete));
 
-        setPodcastsData(
-            podcastsData.filter((favPod) => favPod.uuid !== uuidToDelete)
-        );
-    };
+    setPodcastsData(
+      podcastsData.filter((favPod) => favPod.uuid !== uuidToDelete)
+    );
+  };
+
+  //   podcastToAdd is API object; need to update dbFavPods and podcastsData
+  const addToFavouriteDB = (podcastToAdd) => {
+    postFavourite(podcastToAdd).then((savedPodcast) =>
+      setDbFavPods([...dbFavPods, savedPodcast])
+    );
+  };
 
     return (
         <>
@@ -95,6 +100,7 @@ const PodcastContainer = () => {
             <AudioPlayer nowPlaying={nowPlaying} />
         </>
     );
+        
 };
 
 export default PodcastContainer;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { getPodcastSearch } from "../services/APIService";
-
+import Podcast from "./Podcast";
 const SearchList = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -11,6 +11,10 @@ const SearchList = () => {
     setSearchResults(data);
   };
   console.log("searchResults: ", searchResults);
+
+  const resultPodcast = searchResults.map((searchPod, index) => {
+    return <Podcast key={index} podcast={searchPod} />;
+  });
 
   return (
     <>
@@ -25,14 +29,7 @@ const SearchList = () => {
           <SearchButton onClick={handleSearch}>Search</SearchButton>
         </div>
       </FilteredSearch>
-      <SearchResults>
-        {searchResults.map((result) => (
-          <SearchResult key={result.uuid}>
-            <ResultTitle>{result.name}</ResultTitle>
-            <ResultImg src={result.imageUrl}></ResultImg>
-          </SearchResult>
-        ))}
-      </SearchResults>
+      <SearchResults>{resultPodcast}</SearchResults>
     </>
   );
 };
@@ -77,6 +74,6 @@ const ResultDescription = styled.p`
 `;
 
 export const ResultImg = styled.img`
-width: 100px;
-height: 100px;
+  width: 100px;
+  height: 100px;
 `;

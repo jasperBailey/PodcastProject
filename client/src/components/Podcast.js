@@ -1,22 +1,18 @@
 import styled from "styled-components";
-import "./Podcast.css";
 
-const Podcast = ({ podcast, removeFavourite }) => {
-  const handleButtonClick = () => {
-    removeFavourite(podcast.uuid);
-  };
-
+const Podcast = ({ podcast, addFavourite }) => {
+  // const handleButtonClick = () => {
+  //   removeFavourite(podcast.uuid);
+  // };
 
   return (
     <>
-      <div className="podcastList-body">
+      <div className="searchedPod-body">
         <StyledImg src={podcast.imageUrl}></StyledImg>
-        <h4>
-          {podcast.name}{" "}
-        </h4>
-        <button className="deleteButton" onClick={handleButtonClick}>Remove</button>
-        </div>
-        {/* add onclick to bring to this selected podcast to see more details: discription, episodes etc. */}
+        <h4>{podcast.name}</h4>
+        <button className="deleteButton">Add</button>
+      </div>
+      {/* add onclick to bring to this selected podcast to see more details: discription, episodes etc. */}
     </>
   );
 };
