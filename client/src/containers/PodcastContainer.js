@@ -17,6 +17,7 @@ import {
 const PodcastContainer = () => {
     const [dbFavPods, setDbFavPods] = useState([]);
     const [podcastsData, setPodcastsData] = useState([]);
+    const [nowPlaying, setNowPlaying] = useState(null);
 
     useEffect(() => fetchAllPodcastData, []);
 
@@ -55,6 +56,13 @@ const PodcastContainer = () => {
         );
     };
 
+    //   podcastToAdd is API object; need to update dbFavPods and podcastsData
+    const addToFavouriteDB = (podcastToAdd) => {
+        postFavourite(podcastToAdd).then((savedPodcast) =>
+            setDbFavPods([...dbFavPods, savedPodcast])
+        );
+    };
+
     return (
         <>
             <div className="app-container">
@@ -77,7 +85,7 @@ const PodcastContainer = () => {
                         />
                         <Route
                             path="series/:id"
-                            element={<Series/>}
+                            element={<Series setNowPlaying={setNowPlaying} />}
                         />
                         {/* 
         <Route path="/queue" element={<Queue />} />
@@ -85,7 +93,7 @@ const PodcastContainer = () => {
                     </Routes>
                 </Router>
             </div>
-            <AudioPlayer />
+            <AudioPlayer nowPlaying={nowPlaying} />
         </>
     );
 };
