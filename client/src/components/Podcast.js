@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-const Podcast = ({ podcast }) => {
+import "./Podcast.css";
+
+const Podcast = ({ podcast, addToFavourite }) => {
+  const [subsButtonMsg, setSubsButtonMsg] = useState("subscribe");
+  const handleClickButton = (podcast) => {
+    addToFavourite(podcast);
+    setSubsButtonMsg("subscribed");
+  };
+
   return (
     <>
     

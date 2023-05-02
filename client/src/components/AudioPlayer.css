@@ -1,7 +1,7 @@
 .audio-player-banner {
     height: 144px;
     width: 100%;
-    position: fixed;
+    position: auto;
     bottom: 0;
     background: rgb(255, 255, 255);
     display:flex;
