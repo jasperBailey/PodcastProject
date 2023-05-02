@@ -76,6 +76,7 @@ const ResultDescription = styled.p`
   font-size: 1rem;
 `;
 
-const ResultImg = styled.img`
-font-size: 1px;
+export const ResultImg = styled.img`
+width: 100px;
+height: 100px;
 `;
