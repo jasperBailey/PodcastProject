@@ -1,15 +1,17 @@
 .router{
     font-size: 100px;
     cursor: pointer;
+    border: black;
+    background: tar;
 }
 
 .active{
     color:greenyellow;
-    background-color: #fff;
+    background-color: greenyellow;
     font-size: 25px;
     appearance: none;
     background-color: transparent;
-    border: 0.125em solid greenyellow;
+    border: 0.300em solid black;
     border-radius: 0.9375em;
     box-sizing: border-box;
     color: black;
