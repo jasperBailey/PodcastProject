@@ -16,6 +16,7 @@ const Series = () => {
     console.log(seriesData)
 
     return (
+        seriesData ? 
         <>
             <h2>{seriesData.name}</h2>
             <StyledImg src={seriesData.imageUrl}></StyledImg>
@@ -23,7 +24,7 @@ const Series = () => {
                 <p>{seriesData.description}</p>
             </DesDiv>
             <StyledDiv>
-                {seriesData ? seriesData.episodes.map((episode) => {
+                {seriesData.episodes.map((episode) => {
                     return (
                         <StyledUl>
                             <StyledLi>{episode.name}</StyledLi>
@@ -35,9 +36,9 @@ const Series = () => {
                             </StyledLi>
                         </StyledUl>
                     );
-                }) : null}
+                })}
             </StyledDiv>
-        </>
+        </> : null
     );
 };
 
