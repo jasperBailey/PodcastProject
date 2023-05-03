@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import * as React from "react";
-
 import Podcast from "./Podcast";
 
 const FavPodcast = ({ podcast, removeFavourite }) => {
@@ -9,13 +8,15 @@ const FavPodcast = ({ podcast, removeFavourite }) => {
   };
 
   return (
-    <div className="podcastList-body">
-      <Podcast podcast={podcast} />
-      <FavPodcastBox>
-        <DeletButton className="deleteButton" onClick={handleButtonClick}>
-          Remove
-        </DeletButton>
-      </FavPodcastBox>
+    <div className="podcastList-container">
+      <div className="podcastList-body">
+        <Podcast podcast={podcast} />
+        <FavPodcastBox>
+          <DeletButton className="deleteButton" onClick={handleButtonClick}>
+            Remove
+          </DeletButton>
+        </FavPodcastBox>
+      </div>
     </div>
   );
 };
@@ -44,7 +45,6 @@ export const DeletButton = styled.div`
 `;
 
 export const FavPodcastBox = styled.div`
-  color: red;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;

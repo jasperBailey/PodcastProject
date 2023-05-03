@@ -31,7 +31,7 @@ export const StyledDiv1 = styled.div`
   width: 100%;
   max-width: 225px;
   justify-content: center;
-  margin-left: 60px;
+  margin-left: 217px;
   margin-bottom: 22px;
   margin-top: 80px;
 `;
