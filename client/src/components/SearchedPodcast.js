@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Podcast from "./Podcast";
+import "./SearchedPodcast.css";
 
 const SearchedPodcast = ({ podcast, addToFavourite }) => {
   const [subsButtonMsg, setSubsButtonMsg] = useState("subscribe");
@@ -10,7 +11,7 @@ const SearchedPodcast = ({ podcast, addToFavourite }) => {
   };
 
   return (
-    <>
+    <div className="searchedPod-container">
       <div className="searchedPod-body">
         <Podcast podcast={podcast} />
         <StyledAddButton
@@ -20,10 +21,12 @@ const SearchedPodcast = ({ podcast, addToFavourite }) => {
           {subsButtonMsg}
         </StyledAddButton>
       </div>
-    </>
+    </div>
   );
 };
+
 export default SearchedPodcast;
+
 export const StyledImg = styled.img`
   width: 100px;
   height: 100px;
@@ -48,5 +51,5 @@ export const StyledAddButton = styled.div`
   padding: 10px 15px;
   color: #fff;
   background-color: black;
-  height: 20px;
+  height: 15px;
 `;

@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./Podcast.css";
@@ -17,6 +18,6 @@ const Podcast = ({ podcast, addToFavourite }) => {
 
 export default Podcast;
 export const StyledImg = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
 `;
