@@ -7,7 +7,7 @@ h3 {
 
   width: 100%;
   padding: 1rem;
-  margin-top: 40px;
+  margin-top: 50px;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -20,7 +20,7 @@ h3 {
   background-image: url("./logo5.png");
   background-size: contain;
   background-repeat: no-repeat;
-  top: 0;
+  top: 10px;
   left: 10px;
 }
 .navRight {
@@ -49,42 +49,3 @@ h3 {
   margin: 20px;
 }
 
-/* export const WrapDiv = styled.div`
-
-
-  height: 100%;
-  width: 0;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  background-color: #111;
-  margin-top: 40px;
-  margin-left: 700px;
-
-`;
-export const NavDiv = styled.div`
- 
-`;
-export const SidenavUl = styled.ul`
-  list-style: none;
-  display: flex;
-  justify-content: flex-end;
-  padding: 0px;
-  background-color: rgb(51, 51, 51);
-  top: 0px;
-  width: 100%;
-  align-items: baseline;
-`;
-
-export const SidenavLi = styled.li`
-  color: black;
-  margin-right: 15px;
-  float: right;
-`;
-
-export const StyledNavLink = styled(NavLink)`
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-  cursor: pointer;
-`; */
