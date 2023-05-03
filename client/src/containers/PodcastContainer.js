@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import SearchList from "../components/SearchList";
 import FavList from "../components/FavList";
-import AudioPlayer from "../components/AudioPlayer";
+import AudioContainer from "./AudioContainer";
 import Series from "../components/Series";
 import { getPodSeries } from "../services/APIService";
 import "./PodcastContainer.css";
@@ -58,7 +58,7 @@ const PodcastContainer = () => {
     const findDuplicate = dbFavPods.find((pod) => {
       return pod.uuid === podcastToAdd.uuid;
     });
-    if (findDuplicate) return 
+    if (findDuplicate) return;
 
     const podcastToAddDB = {
       uuid: podcastToAdd.uuid,
@@ -76,6 +76,7 @@ const PodcastContainer = () => {
       <div className="app-container">
         <Router>
           <div className="logo"></div>
+
           <NavBar />
           <Routes>
             <Route
@@ -102,7 +103,8 @@ const PodcastContainer = () => {
           </Routes>
         </Router>
       </div>
-      <AudioPlayer nowPlaying={nowPlaying} />
+      <div id="padder"></div>
+      <AudioContainer nowPlaying={nowPlaying} />
     </>
   );
 };

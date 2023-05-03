@@ -8,15 +8,13 @@ const FavPodcast = ({ podcast, removeFavourite }) => {
   };
 
   return (
-    <div className="podcastList-container">
-      <div className="podcastList-body">
-        <Podcast podcast={podcast} />
-        <FavPodcastBox>
-          <DeletButton className="deleteButton" onClick={handleButtonClick}>
-            Remove
-          </DeletButton>
-        </FavPodcastBox>
-      </div>
+    <div className="podcastList-body">
+      <Podcast podcast={podcast} />
+      <FavPodcastBox>
+        <DeletButton className="deleteButton" onClick={handleButtonClick}>
+          unsubscribe
+        </DeletButton>
+      </FavPodcastBox>
     </div>
   );
 };

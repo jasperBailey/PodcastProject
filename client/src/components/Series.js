@@ -20,7 +20,7 @@ const Series = ({ setNowPlaying }) => {
             <h2>{seriesData.name}</h2>
             <StyledImg src={seriesData.imageUrl}></StyledImg>
             <DesDiv>
-                <p>{seriesData.description}</p>
+                {seriesData.description}
             </DesDiv>
             <StyledDiv>
                 {seriesData.episodes.map((episode, index) => (
@@ -40,20 +40,28 @@ const Series = ({ setNowPlaying }) => {
 export default Series;
 
 export const StyledImg = styled.img`
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
 `;
 
 export const StyledDiv = styled.div`
-    display: flex;
+   display: flex;
     flex-direction: column;
+    cursor:pointer;
+    
 `;
 
 export const AudioDiv = styled.div``;
 
 export const DesDiv = styled.div`
-    width: fit-content;
-    /* background-color: lightgrey; */
-    padding: 20px;
+ display: flex;
+    justify-content: center;
+    padding: 30px;
+    margin-top: 2em;
     margin-bottom: 2em;
-`;
+    color: black;
+    font-style: revert;
+    border: thin solid black;
+    flex-wrap: nowrap;
+    max-width: 1000px;
+`
