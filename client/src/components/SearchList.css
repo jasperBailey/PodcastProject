@@ -1,0 +1,28 @@
+.filteredSearch {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 100px;
+  right: 15px;
+}
+.inputAndButton > input {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  margin-right: 15px;
+  flex: 2px; 
+}
+.searchButton {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 0rem;
+  cursor: pointer;
+}
+.searchResults {
+  display: flex; /* use a flexbox layout */
+  flex-wrap: wrap; /* wrap items to the next row */
+  margin-top: 5rem;
+}
