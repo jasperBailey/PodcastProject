@@ -40,20 +40,26 @@ const Series = ({ setNowPlaying }) => {
 export default Series;
 
 export const StyledImg = styled.img`
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
 `;
 
 export const StyledDiv = styled.div`
-    display: flex;
+   display: flex;
     flex-direction: column;
+    cursor:pointer;
+    
 `;
 
 export const AudioDiv = styled.div``;
 
 export const DesDiv = styled.div`
-    width: fit-content;
-    /* background-color: lightgrey; */
+ display: flex;
+    justify-content: center;
     padding: 20px;
     margin-bottom: 2em;
-`;
+    color: black;
+    font-style: revert;
+    border: thick solid black;
+    flex-wrap: nowrap;
+`
