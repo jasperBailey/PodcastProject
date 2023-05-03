@@ -12,7 +12,7 @@
     appearance: none;
     background-color: transparent;
     border: 0.2em solid black;
-    border-radius: 0.5em;
+    border-radius: 0em;
     box-sizing: border-box;
     cursor: pointer;
     display: inline-block;
