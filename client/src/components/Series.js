@@ -56,10 +56,12 @@ export const AudioDiv = styled.div``;
 export const DesDiv = styled.div`
  display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 30px;
+    margin-top: 2em;
     margin-bottom: 2em;
     color: black;
     font-style: revert;
-    border: thick solid black;
+    border: thin solid black;
     flex-wrap: nowrap;
+    max-width: 1000px;
 `
