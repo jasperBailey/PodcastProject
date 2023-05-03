@@ -16,9 +16,6 @@ const NavBar = () => {
             <StyledNavLink to="/favourites">FAVOURITES</StyledNavLink>
           </SidenavLi>
           <SidenavLi>
-            <StyledNavLink to="/queue">QUEUE</StyledNavLink>
-          </SidenavLi>
-          <SidenavLi>
             <StyledNavLink to="/liked">LIKED</StyledNavLink>
           </SidenavLi>
         </SidenavUl>
