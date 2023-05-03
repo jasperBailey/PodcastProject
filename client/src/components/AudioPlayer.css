@@ -27,9 +27,11 @@
 
 #description-container {
     max-width: 20rem;
-    max-height: 100px;
+    max-height: 144px;
     text-align: left;
     text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
 }
 
 .controls {
