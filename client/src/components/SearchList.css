@@ -6,7 +6,7 @@
   top: 15px;
 }
 .inputAndButton {
-  position: fixed;
+  position: absolute;
 }
 .inputAndButton > input {
   font-size: 1rem;
