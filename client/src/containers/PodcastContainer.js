@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import SearchList from "../components/SearchList";
 import FavList from "../components/FavList";
-import AudioContainer from "../containers/AudioContainer";
+import AudioContainer from "./AudioContainer";
 import Series from "../components/Series";
 import { getPodSeries } from "../services/APIService";
 import "./PodcastContainer.css";
