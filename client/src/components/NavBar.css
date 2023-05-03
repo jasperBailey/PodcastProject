@@ -1,0 +1,51 @@
+h3 {
+  scroll-margin-top: 5rem;
+}
+.navBar-wrap {
+  position: relative;
+  left: 0;
+
+  width: 100%;
+  padding: 1rem;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  row-gap: 10px;
+}
+.logoLeft {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  background-image: url("./logo5.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 10px;
+  left: 10px;
+}
+.navRight {
+  padding: auto;
+  margin: auto;
+  position: fixed;
+
+  flex-basis: auto;
+  top: 0;
+  right: 100px;
+}
+.navUl {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  background-color: rgb(51, 51, 51);
+}
+
+.navLi {
+  margin: 20px;
+}
+
