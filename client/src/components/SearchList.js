@@ -10,7 +10,6 @@ const SearchList = ({ addToFavourite }) => {
     const data = await getPodcastSearch(searchText);
     setSearchResults(data);
   };
-  // console.log("searchResults: ", searchResults);
 
   const resultPodcast = searchResults.map((searchPod, index) => {
     return (
