@@ -1,54 +1,44 @@
 .router {
-    font-size: 100px;
-    cursor: pointer;
-    border: rgb(27, 208, 93);
-    background: tar;
+  font-size: 100px;
+  cursor: pointer;
+  border: rgb(27, 208, 93);
+  background: tar;
 }
 
 .active {
-    color: rgb(27, 208, 93);
-    background-color: rgb(27, 208, 93);
-    font-size: 25px;
-    appearance: none;
-    background-color: transparent;
-    border: 0.2em solid black;
-    border-radius: 0.5em;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-block;
-    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 15px;
-    font-weight: 600;
-    line-height: normal;
-    margin: 0;
-    max-height: 5em;
-    min-height: em;
-    padding: 0.4em 0.3em;
-    text-align: center;
-    text-decoration: none;
-    transition: all 200ms cubic-bezier(0.23, 1, 0.32, 1);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    will-change: transform;
+  color: rgb(0, 3, 1);
+  background-color: rgb(27, 208, 93);
+  font-size: 25px;
+  appearance: none;
+  background-color: transparent;
+  border: 0.2em solid black;
+  border-radius: 0em;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  max-height: 5em;
+  min-height: em;
+  padding: 0.4em 0.3em;
+  text-align: center;
+  text-decoration: none;
+  transition: all 200ms cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
 }
 
 a {
-    color: black;
-    text-decoration: none;
-}
-
-.logo {
-    width: 200px;
-    height: 200px;
-    background-image: url("./img/logo5.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 15px;
-    left: 15px;
+  color: black;
+  text-decoration: none;
 }
 
 #padder {
-    height: 128px;
+  height: 128px;
 }
