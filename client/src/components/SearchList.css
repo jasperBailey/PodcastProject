@@ -1,16 +1,19 @@
 .filteredSearch {
+  /* this is the parent */
   display: flex;
-  justify-content: flex-end;
-  position: absolute;
-  top: 100px;
-  right: 15px;
+  justify-content: center;
+  position: relative;
+  top: 15px;
+}
+.inputAndButton {
+  position: fixed;
 }
 .inputAndButton > input {
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  border: 1px solid black;
+  border: 2px solid black;
   margin-right: 15px;
-  flex: 2px; 
+  flex: 2px;
 }
 .searchButton {
   font-size: 1rem;
