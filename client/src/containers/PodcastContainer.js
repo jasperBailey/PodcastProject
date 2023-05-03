@@ -75,8 +75,6 @@ const PodcastContainer = () => {
     <>
       <div className="app-container">
         <Router>
-          <div className="logo"></div>
-
           <NavBar />
           <Routes>
             <Route
@@ -84,7 +82,6 @@ const PodcastContainer = () => {
               path="/"
               element={<SearchList addToFavourite={addToFavourite} />}
             />
-
             <Route
               path="/favourites"
               element={

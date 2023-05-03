@@ -1,12 +1,12 @@
 .filteredSearch {
-  /* this is the parent */
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   position: relative;
   top: 15px;
 }
 .inputAndButton {
-  position: fixed;
+  position: absolute;
 }
 .inputAndButton > input {
   font-size: 1rem;
@@ -17,8 +17,10 @@
 }
 .inputAndButton > input:focus {
   border: 3px solid black;
+  outline: none;
 }
 .searchButton {
+  position: absolute;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   background-color: black;
@@ -28,7 +30,7 @@
   cursor: pointer;
 }
 .searchResults {
-  display: flex; 
-  flex-wrap: wrap; 
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 5rem;
 }
