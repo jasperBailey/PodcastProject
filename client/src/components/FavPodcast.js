@@ -39,8 +39,8 @@ export const DeletButton = styled.div`
   text-align: center;
   padding: 10px 15px;
   color: #fff;
-  background-color: red;
-  height: 20px;
+  background-color: black;
+  height: 15px;
 `;
 
 export const FavPodcastBox = styled.div`
