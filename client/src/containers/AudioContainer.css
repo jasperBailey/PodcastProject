@@ -1,32 +1,38 @@
-.audio-player-banner {
+#main-banner {
     height: 144px;
     width: 100%;
-    position: fixed;
-    bottom: 0;
     background: rgb(255, 255, 255);
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  #non-img-container {
-    display:flex;
+}
+
+#audio-player-banner {
+    height: 150px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background: rgb(255, 255, 255)
+}
+
+#non-img-container {
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     width: calc(100vw - 144px);
     margin-left: 133px;
-  }
-  
-  #current-episode-img {
-    height:144px;
-  }
-  
-  #current-episode-description {
-    font-size:smaller;
-  }
-  
-  #description-container {
+}
+
+#current-episode-img {
+    height: 144px;
+}
+
+#current-episode-description {
+    font-size: smaller;
+}
+
+#description-container {
     max-width: 20rem;
     max-height: 144px;
     text-align: left;
@@ -37,22 +43,22 @@
 
 .controls {
     height: 8vh;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .controls svg {
+}
+
+.controls svg {
     padding: 1vh;
-  }
-  
-  #current-episode {
+}
+
+#current-episode {
     margin: 1vh;
-  }
-  #current-episode-author {
+}
+#current-episode-author {
     margin: 1vh;
-  }
-  
-  body {
+}
+
+body {
     padding-bottom: 144px;
-  }
+}
