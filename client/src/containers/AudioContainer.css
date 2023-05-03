@@ -9,7 +9,7 @@
 }
 
 #audio-player-banner {
-    height: 150px;
+    height: 148px;
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -20,7 +20,6 @@
     flex-direction: row;
     justify-content: space-evenly;
     width: calc(100vw - 144px);
-    margin-left: 133px;
 }
 
 #current-episode-img {
@@ -38,26 +37,4 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: normal;
-}
-
-.controls {
-    height: 8vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.controls svg {
-    padding: 1vh;
-}
-
-#current-episode {
-    margin: 1vh;
-}
-#current-episode-author {
-    margin: 1vh;
-}
-
-body {
-    padding-bottom: 144px;
 }

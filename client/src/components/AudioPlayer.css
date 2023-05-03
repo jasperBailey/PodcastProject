@@ -1,0 +1,17 @@
+.controls {
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls svg {
+    padding: 1vh;
+}
+
+#current-episode {
+    margin: 1vh;
+}
+#current-episode-author {
+    margin: 1vh;
+}
