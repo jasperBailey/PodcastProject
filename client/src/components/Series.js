@@ -20,7 +20,7 @@ const Series = ({ setNowPlaying }) => {
             <h2>{seriesData.name}</h2>
             <StyledImg src={seriesData.imageUrl}></StyledImg>
             <DesDiv>
-                <p>{seriesData.description}</p>
+                {seriesData.description}
             </DesDiv>
             <StyledDiv>
                 {seriesData.episodes.map((episode, index) => (
