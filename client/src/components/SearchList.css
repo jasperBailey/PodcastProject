@@ -15,6 +15,9 @@
   margin-right: 15px;
   flex: 2px;
 }
+.inputAndButton > input:focus {
+  border: 3px solid black;
+}
 .searchButton {
   font-size: 1rem;
   padding: 0.5rem 1rem;
@@ -25,7 +28,7 @@
   cursor: pointer;
 }
 .searchResults {
-  display: flex; /* use a flexbox layout */
-  flex-wrap: wrap; /* wrap items to the next row */
+  display: flex; 
+  flex-wrap: wrap; 
   margin-top: 5rem;
 }
