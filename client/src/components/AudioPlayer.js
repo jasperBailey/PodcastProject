@@ -13,53 +13,40 @@ import "./AudioPlayer.css";
 const AudioPlayer = ({
     nowPlaying,
     audioRef,
-    progressBarRef,
-    setDuration,
-    duration,
-    setTimeProgress,
+    progressBarRef
 }) => {
     const [isPlaying, setIsPlaying] = useState(false);
 
+    const playAnimationRef = useRef();
+
+    const onLoadedMetadata = () => {
+        playAnimationRef.current = requestAnimationFrame(repeat)
+    }
+
     const togglePlayPause = () => {
+        console.log(`setting isPlaying to ${!isPlaying}`);
         setIsPlaying(!isPlaying);
     };
 
-    const playAnimationRef = useRef();
-
     const repeat = useCallback(() => {
-        if (audioRef.current.paused) {
-            return;
-        }
-        console.log("repeat");
-        const currentTime = audioRef.current.currentTime;
-        setTimeProgress(currentTime);
-        progressBarRef.current.value = currentTime;
         progressBarRef.current.style.setProperty(
             "width",
-            `${(progressBarRef.current.value / duration) * 100}%`
+            `${(audioRef.current.currentTime / audioRef.current.duration) * 100}%`
         );
         playAnimationRef.current = requestAnimationFrame(repeat);
-    }, [audioRef, duration, progressBarRef, setTimeProgress]);
+    }, []);
 
     useEffect(() => {
         if (isPlaying) {
-            console.log("playing!");
             audioRef.current.play();
-            setDuration(audioRef.current.duration);
         } else {
-            console.log("stopping!");
             audioRef.current.pause();
         }
-        playAnimationRef.current = requestAnimationFrame(repeat);
     }, [isPlaying]);
 
     useEffect(() => {
         if (nowPlaying) {
-            console.log(`changing src to ${nowPlaying.audioUrl}`);
             audioRef.src = nowPlaying.audioUrl;
-            audioRef.current.load();
-            setIsPlaying(true);
-            playAnimationRef.current = requestAnimationFrame(repeat);
         }
     }, [nowPlaying]);
 
@@ -68,6 +55,7 @@ const AudioPlayer = ({
             <audio
                 src={nowPlaying ? nowPlaying.audioUrl : null}
                 ref={audioRef}
+                onLoadedMetadata={onLoadedMetadata}
             />
             <h3 id="current-episode">
                 Now playing:{" "}
