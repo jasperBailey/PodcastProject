@@ -1,15 +1,12 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "./Podcast.css";
 
-const Podcast = ({ podcast, addToFavourite }) => {
-
+const Podcast = ({ podcast }) => {
   return (
     <>
-    
-      <StyledImg src={podcast.imageUrl}></StyledImg>
       <Link to={`/series/${podcast.uuid}`}>
+        <StyledImg src={podcast.imageUrl}></StyledImg>
         <h4>{podcast.name}</h4>
       </Link>
     </>
