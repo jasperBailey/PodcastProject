@@ -1,5 +1,4 @@
 import FavPodcast from "./FavPodcast";
-
 import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 
@@ -25,16 +24,26 @@ const FavList = ({ podcastsData, removeFavourite, handleOnClick }) => {
 };
 
 export default FavList;
+
 export const StyledDiv1 = styled.div`
-  margin-right: 50px;
-  padding-top: 100px;
-  padding-left: 150px;
   display: flex;
-  flex-wrap: wrap;
-  padding-right: 150px;
+  flex-direction: column;
+  width: 100%;
+  max-width: 225px;
+  justify-content: center;
+  margin-left: 217px;
+  margin-bottom: 22px;
+  margin-top: 80px;
 `;
 export const StyledDiv2 = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  align-content: space-between;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  gap: 118px;
 `;

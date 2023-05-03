@@ -58,7 +58,7 @@ const PodcastContainer = () => {
     const findDuplicate = dbFavPods.find((pod) => {
       return pod.uuid === podcastToAdd.uuid;
     });
-    if (findDuplicate) return 
+    if (findDuplicate) return;
 
     const podcastToAddDB = {
       uuid: podcastToAdd.uuid,
@@ -76,6 +76,7 @@ const PodcastContainer = () => {
       <div className="app-container">
         <Router>
           <div className="logo"></div>
+
           <NavBar />
           <Routes>
             <Route
