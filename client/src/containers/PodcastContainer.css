@@ -11,23 +11,19 @@
     font-size: 25px;
     appearance: none;
     background-color: transparent;
-    border: 0.1em solid rgb(27, 208, 93);
-    border-radius: 0.9em;
+    border: 0.2em solid rgb(27, 208, 93);
+    border-radius: 0.5em;
     box-sizing: border-box;
-    color: rgb(27, 208, 93);
     cursor: pointer;
     display: inline-block;
-    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-        "Segoe UI Symbol";
-    font-size: 16px;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 15px;
     font-weight: 600;
     line-height: normal;
     margin: 0;
-    min-height: 3em;
-    min-width: 0;
-    outline: none;
-    padding: 1em 1.21em;
+    max-height: 5em;
+    min-height: em;
+    padding: 0.4em 0.3em;
     text-align: center;
     text-decoration: none;
     transition: all 200ms cubic-bezier(0.23, 1, 0.32, 1);
@@ -54,5 +50,5 @@ a {
 }
 
 #padder {
-    height: 144px;
+    height: 128px;
 }
