@@ -31,11 +31,6 @@ const AudioContainer = ({ nowPlaying }) => {
                 />
                 <div id="non-img-container">
                     <AudioPlayer nowPlaying={nowPlaying} audioRef={audioRef} />
-                    <div id="description-container">
-                        <p id="current-episode-description">
-                            {nowPlaying ? nowPlaying.description : " "}
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
