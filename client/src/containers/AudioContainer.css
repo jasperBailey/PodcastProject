@@ -1,5 +1,5 @@
 #main-banner {
-    height: 144px;
+    height: 128px;
     width: 100%;
     background: rgb(255, 255, 255);
     display: flex;
@@ -9,32 +9,19 @@
 }
 
 #audio-player-banner {
-    height: 148px;
+    height: 132px;
     width: 100%;
     position: fixed;
     bottom: 0;
 }
 
 #non-img-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: calc(100vw - 144px);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 #current-episode-img {
-    height: 144px;
-}
-
-#current-episode-description {
-    font-size: smaller;
-}
-
-#description-container {
-    max-width: 20rem;
-    max-height: 144px;
-    text-align: left;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: normal;
+    height: 128px;
 }
