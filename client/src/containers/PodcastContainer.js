@@ -102,6 +102,7 @@ const PodcastContainer = () => {
           </Routes>
         </Router>
       </div>
+      <div id="padder"></div>
       <AudioContainer nowPlaying={nowPlaying} />
     </>
   );

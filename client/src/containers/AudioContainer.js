@@ -4,7 +4,10 @@ import AudioPlayer from "../components/AudioPlayer";
 import ProgressBar from "../components/ProgressBar";
 
 const AudioContainer = ({ nowPlaying }) => {
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [timeProgress, setTimeProgress] = useState(0);
+    const [duration, setDuration] = useState(0);
+
+    const progressBarRef = useRef();
 
     const audioRef = useRef();
 

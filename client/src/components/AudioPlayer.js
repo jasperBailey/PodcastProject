@@ -7,8 +7,24 @@ import {
     faCirclePlay,
     faCirclePause,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect } from "react";
+import "./AudioPlayer.css"
 
-const AudioPlayer = ( {nowPlaying, audioRef} ) => {
+const AudioPlayer = ({ nowPlaying, audioRef }) => {
+    const [isPlaying, setIsPlaying] = useState(false);
+
+    const togglePlayPause = () => {
+        setIsPlaying(!isPlaying);
+    };
+
+    useEffect(() => {
+        if (isPlaying) {
+            audioRef.current.play();
+        } else {
+            audioRef.current.pause();
+        }
+    }, [isPlaying]);
+
     return (
         <div className="audio-player">
             <audio ref={audioRef} />
@@ -20,7 +36,7 @@ const AudioPlayer = ( {nowPlaying, audioRef} ) => {
                 <FontAwesomeIcon icon={faBackwardStep} size="xl" />
                 <FontAwesomeIcon icon={faArrowRotateLeft} size="xl" />
                 <FontAwesomeIcon
-                    // onClick={handleTogglePlay}
+                    onClick={togglePlayPause}
                     //icon={audioRef.current.paused ? faCirclePlay : faCirclePause}
                     icon={faCirclePlay}
                     size="2xl"
