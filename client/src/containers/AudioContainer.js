@@ -1,5 +1,5 @@
 import "./AudioContainer.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import AudioPlayer from "../components/AudioPlayer";
 import ProgressBar from "../components/ProgressBar";
 
@@ -8,18 +8,11 @@ const AudioContainer = ({ nowPlaying }) => {
     const [duration, setDuration] = useState(0);
 
     const progressBarRef = useRef();
-
     const audioRef = useRef();
-
-    // audioElement.play();
-    // audioElement.pause();
-    // audioElement.currentTime;
-    // audioElement.ended;
-    // audioElement.duration;
 
     return (
         <div id="audio-player-banner">
-            <ProgressBar />
+            <ProgressBar audioRef={audioRef} progressBarRef={progressBarRef} />
             <div id="main-banner">
                 <img
                     id="current-episode-img"
@@ -30,7 +23,14 @@ const AudioContainer = ({ nowPlaying }) => {
                     }
                 />
                 <div id="non-img-container">
-                    <AudioPlayer nowPlaying={nowPlaying} audioRef={audioRef} />
+                    <AudioPlayer
+                        nowPlaying={nowPlaying}
+                        audioRef={audioRef}
+                        progressBarRef={progressBarRef}
+                        setDuration={setDuration}
+                        setTimeProgress={setTimeProgress}
+                        duration={duration}
+                    />
                 </div>
             </div>
         </div>

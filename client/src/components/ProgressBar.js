@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const ProgressBar = () => {
+const ProgressBar = ({ progressBarRef }) => {
     return (
         <ProgressBarDiv>
-            <ProgressBarCurrent />
+            <ProgressBarCurrent ref={progressBarRef} />
         </ProgressBarDiv>
     );
 };
@@ -17,6 +17,5 @@ export const ProgressBarDiv = styled.div`
 
 export const ProgressBarCurrent = styled.div`
     height: 4px;
-    width: 60%;
     background-color: red;
 `;
