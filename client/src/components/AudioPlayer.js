@@ -7,24 +7,50 @@ import {
     faCirclePlay,
     faCirclePause,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import "./AudioPlayer.css";
 
-const AudioPlayer = ({ nowPlaying, audioRef }) => {
+const AudioPlayer = ({
+    nowPlaying,
+    audioRef,
+    progressBarRef,
+    setDuration,
+    duration,
+    setTimeProgress,
+}) => {
     const [isPlaying, setIsPlaying] = useState(false);
 
     const togglePlayPause = () => {
         setIsPlaying(!isPlaying);
     };
 
+    const playAnimationRef = useRef();
+
+    const repeat = useCallback(() => {
+        if (audioRef.current.paused) {
+            return;
+        }
+        console.log("repeat");
+        const currentTime = audioRef.current.currentTime;
+        setTimeProgress(currentTime);
+        progressBarRef.current.value = currentTime;
+        progressBarRef.current.style.setProperty(
+            "width",
+            `${(progressBarRef.current.value / duration) * 100}%`
+        );
+        playAnimationRef.current = requestAnimationFrame(repeat);
+    }, [audioRef, duration, progressBarRef, setTimeProgress]);
+
     useEffect(() => {
         if (isPlaying) {
             console.log("playing!");
             audioRef.current.play();
+            setDuration(audioRef.current.duration);
         } else {
             console.log("stopping!");
             audioRef.current.pause();
         }
+        playAnimationRef.current = requestAnimationFrame(repeat);
     }, [isPlaying]);
 
     useEffect(() => {
@@ -32,16 +58,10 @@ const AudioPlayer = ({ nowPlaying, audioRef }) => {
             console.log(`changing src to ${nowPlaying.audioUrl}`);
             audioRef.src = nowPlaying.audioUrl;
             audioRef.current.load();
-            setIsPlaying(true)
+            setIsPlaying(true);
+            playAnimationRef.current = requestAnimationFrame(repeat);
         }
     }, [nowPlaying]);
-
-    //logging
-    if (audioRef.current) {
-        console.log(audioRef.current.src);
-        console.log(audioRef.current.paused);
-    }
-    /////////
 
     return (
         <div className="audio-player">
@@ -58,11 +78,7 @@ const AudioPlayer = ({ nowPlaying, audioRef }) => {
                 <FontAwesomeIcon icon={faArrowRotateLeft} size="xl" />
                 <FontAwesomeIcon
                     onClick={togglePlayPause}
-                    icon={
-                        audioRef.current && audioRef.current.paused
-                            ? faCirclePause
-                            : faCirclePlay
-                    }
+                    icon={isPlaying ? faCirclePause : faCirclePlay}
                     size="2xl"
                 />
                 <FontAwesomeIcon icon={faArrowRotateRight} size="xl" />
