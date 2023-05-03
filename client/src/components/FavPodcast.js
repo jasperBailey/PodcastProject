@@ -13,7 +13,7 @@ const FavPodcast = ({ podcast, removeFavourite }) => {
       <Podcast podcast={podcast} />
       <FavPodcastBox>
         <DeletButton className="deleteButton" onClick={handleButtonClick}>
-          Remove
+          unsubscribe
         </DeletButton>
       </FavPodcastBox>
     </div>
