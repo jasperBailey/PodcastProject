@@ -5,9 +5,11 @@ import "./SearchedPodcast.css";
 
 const SearchedPodcast = ({ podcast, addToFavourite }) => {
   const [subsButtonMsg, setSubsButtonMsg] = useState("subscribe");
+  const [buttonText, setButtonText] = useState("black");
   const handleClickButton = (podcast) => {
     addToFavourite(podcast);
     setSubsButtonMsg("subscribed");
+    setButtonText("red");
   };
 
   return (
@@ -15,7 +17,7 @@ const SearchedPodcast = ({ podcast, addToFavourite }) => {
       <div className="searchedPod-body">
         <Podcast podcast={podcast} />
         <StyledAddButton
-          className="deleteButton"
+          className={buttonText}
           onClick={() => handleClickButton(podcast)}
         >
           {subsButtonMsg}
@@ -50,6 +52,6 @@ export const StyledAddButton = styled.div`
   text-align: center;
   padding: 10px 15px;
   color: #fff;
-  background-color: black;
+
   height: 15px;
 `;

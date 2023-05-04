@@ -1,16 +1,13 @@
 .App {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    background-color: whitesmoke;
-    color: black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: black;
 }
 
 .active {
-    background-color: #a9acae;
-    transform-style: flat;
+  background-color: #a9acae;
+  transform-style: flat;
 }
-
-
