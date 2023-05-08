@@ -56,7 +56,6 @@ export const getPodcastSearch = async (searchText) => {
             }
         }
     `;
-
   const data = await makeGQLRequest(query);
   return data.searchForTerm.podcastSeries;
 };
