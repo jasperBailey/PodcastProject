@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getPodcastSearch } from "../services/APIService";
 import SearchedPodcast from "./SearchedPodcast";
 import "./SearchList.css";
@@ -10,6 +10,9 @@ const SearchList = ({ addToFavourite }) => {
     const data = await getPodcastSearch(searchText);
     setSearchResults(data);
   };
+
+  useEffect(() => handleSearch, []);
+  // console.log("searchResults default: ", searchResults);
 
   const resultPodcast = searchResults.map((searchPod, index) => {
     return (
@@ -23,7 +26,7 @@ const SearchList = ({ addToFavourite }) => {
 
   return (
     <>
-      <div className='filteredSearch'>
+      <div className="filteredSearch">
         <div className="inputAndButton">
           <input
             type="text"
@@ -31,7 +34,9 @@ const SearchList = ({ addToFavourite }) => {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className= 'searchButton' onClick={handleSearch}>Search</button>
+          <button className="searchButton" onClick={handleSearch}>
+            Search
+          </button>
         </div>
       </div>
       <div className="searchResults">{resultPodcast}</div>
@@ -40,8 +45,3 @@ const SearchList = ({ addToFavourite }) => {
 };
 
 export default SearchList;
-
-
-
-
-
