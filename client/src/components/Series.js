@@ -14,7 +14,7 @@ const Series = ({ setNowPlaying }) => {
         setSeriesData(data);
     };
 
-    useEffect(() => getSeriesData, []);
+    useEffect(() => getSeriesData(), []);
 
     console.log('Series component - id:', id)
 
