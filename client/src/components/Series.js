@@ -10,6 +10,7 @@ const Series = ({ setNowPlaying }) => {
 
     const getSeriesData = async () => {
         const data = await getPodSeries(id);
+        console.log('getting series data:', data, 'with id:', id)
         setSeriesData(data);
     };
 
