@@ -12,7 +12,11 @@ const makeGQLRequest = async (query) => {
     },
   });
 
+  console.log('Created GQL Client, making request...')
+
   const data = await graphQLClient.request(query);
+
+  console.log('got data:', data)
   return data;
 };
 
@@ -34,7 +38,7 @@ export const getPodSeries = async (uuid) => {
         }
     `;
 
-  // console.log(uuid);
+  console.log('getPodSeries uuid:', uuid);
 
   const data = await makeGQLRequest(query);
   return data.getPodcastSeries;

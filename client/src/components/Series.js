@@ -15,6 +15,8 @@ const Series = ({ setNowPlaying }) => {
 
     useEffect(() => getSeriesData, []);
 
+    console.log('Series component - id:', id)
+
     return seriesData ? (
         <>
             <h2>{seriesData.name}</h2>
