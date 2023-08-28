@@ -94,7 +94,7 @@ const PodcastContainer = () => {
               }
             />
             <Route
-              path="series/:id"
+              path="/series/:id"
               element={<Series setNowPlaying={setNowPlaying} />}
             />
           </Routes>
